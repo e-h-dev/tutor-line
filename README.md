@@ -27,7 +27,7 @@
 
 
 
-## 📘 Project Rationale: Tutorline
+## Project Rationale
 
 ### Overview
 Tutorline is an intuitive online platform designed to connect students with passionate, independent tutors. It serves as a space where educators can showcase their expertise, build their brand, and reach learners who genuinely need their support. At its core, Tutorline is about visibility, accessibility, and mutual growth.
@@ -64,6 +64,6 @@ Tutorline stands apart by focusing on:
 Tuterline envisions a future where every educator has the tools to be heard, and every learner has the freedom to choose who they learn from. By nurturing a vibrant, inclusive community, Tuterline will redefine how tutoring is discovered, delivered, and valued.
 
 
-## 📘 About Tutorline
+## About
 
 Tuterline is a platform built to empower independent tutors and simplify the way students find personalized support. We believe every educator deserves a space to showcase their voice, values, and teaching style. At the same time, students need a clear, intuitive way to discover tutors who truly resonate with their goals. Tutorline bridges this gap by offering a streamlined, human-centered experience that prioritizes visibility, trust, and meaningful connection.
