@@ -4,6 +4,7 @@
     --opaque:rgba(122, 46, 46, 0.8);
     --drk-clr:#7a2e2e;
     --light-opaque:rgba(255, 253, 250, 0.8);
+    --main-font:"Schibsted Grotesk", sans-serif;
 }
 
 /*  -----------------base.html styles */
@@ -28,20 +29,34 @@ html body{
     border:solid 2px var(--bg-clr);
     position: relative;
     z-index: 4;
+    font-family:var(--main-font);
 }
 
 .logo{
-    width:100px;
-    height:100px;
+    width:40px;
+    height:40px;
     position:relative;
-    bottom:40px;
+    bottom:5px;
     z-index: 4;
 }
 
-ul{
+.logo-txt{
+    font-weight: 800;
+    position:relative;
+    top:9px;
+    right:4px;
+}
+
+ul,
+.nav-options{
     list-style: none;
     display:flex;
     gap:3rem;
+}
+
+.nav-options{
+    position: relative;
+    left:50px;
 }
 
 
