@@ -1,4 +1,31 @@
 /* -------------------------root styles */
 :root{
-    --font:
+    --bg-clr:#fffdfa;
+    --opaque:rgba(122, 46, 46, 0.8);
+}
+
+/*  -----------------base.html styles */
+
+html body{
+    background-color: var(--bg-clr);
+}
+
+
+/* -------------------home page styles */
+
+.hero-opaque,
+.hero-img{
+    width:100%;
+    height:100%;
+    position:fixed;
+    object-fit: cover;
+    zoom: 60%;
+    aspect-ratio: 4 / 3;
+    top:0;
+}
+
+.hero-opaque{
+    background-color: var(--opaque);
+    position: fixed;
+    z-index: 3;
 }
