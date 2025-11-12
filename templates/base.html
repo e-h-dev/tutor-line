@@ -21,6 +21,29 @@
     <title>TutorLine{% block extra_title %}{% endblock %}</title>
   </head>
   <body>
+    {% block homebody %}
+    {% endblock %}
+    <header>
+      <div class="container-fluid">
+        <div class="row above-nav">
+          <div class="col-12"></div>
+        </div>
+        <div class="row">
+          <div class="col-1 col-lg-2"></div>
+          <div class="col-10 col-lg-8 nav">
+            <ul>
+              <li><img src="/media/logo.png" alt="logo" class="logo"></li>
+                <li>Find a Tutor</li>
+                <li>Subjects</li>
+                <li>Create Tutor Profile</li>
+                <li>account</li>
+                <li>menu</li>
+            </ul>
+          </div>
+          <div class="col-1 col-lg-2"></div>
+        </div>
+      </div>
+    </header>
     {% block content %}
     {% endblock %}
     

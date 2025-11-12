@@ -2,12 +2,46 @@
 :root{
     --bg-clr:#fffdfa;
     --opaque:rgba(122, 46, 46, 0.8);
+    --drk-clr:#7a2e2e;
+    --light-opaque:rgba(255, 253, 250, 0.8);
 }
 
 /*  -----------------base.html styles */
 
 html body{
     background-color: var(--bg-clr);
+}
+
+.above-nav{
+    margin-top:10px;
+    height:30px;
+    position:relative;
+    z-index: 4;
+}
+
+.nav{
+    height:70px;
+    color:var(--drk-clr);
+    background-color:var(--light-opaque);
+    padding-top:20px;
+    border-radius: 9999px;
+    border:solid 2px var(--bg-clr);
+    position: relative;
+    z-index: 4;
+}
+
+.logo{
+    width:100px;
+    height:100px;
+    position:relative;
+    bottom:40px;
+    z-index: 4;
+}
+
+ul{
+    list-style: none;
+    display:flex;
+    gap:3rem;
 }
 
 
