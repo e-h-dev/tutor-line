@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -39,24 +40,26 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'allauth',
-    'allauth.account',
+    #'allauth',
+    #'allauth.account',
     'home',
 
     # socialaccounts.
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
+    #'allauth.socialaccount',
+    #'allauth.socialaccount.providers.google',
 ]
 
 SITE_ID = 1
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-ACCOUNT_LOGIN_METHODS = {'username', 'email'}
-ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_SIGN_UP_EMAIL_TWICE = True
-ACCOUNT_USERNAME_MIN_LENGTH = 4
+# ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"
+# ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+# ACCOUNT_SIGNUP_FIELDS = ['email', 'username', 'password1', 'password2']
+# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+# ACCOUNT_USERNAME_MIN_LENGTH = 4
+# ACCOUNT_SIGNUP_EMAIL_TWICE = True
+
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
@@ -69,8 +72,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # Account middleware:
-    "allauth.account.middleware.AccountMiddleware",
+    #"allauth.account.middleware.AccountMiddleware",
 ]
+
+
 
 ROOT_URLCONF = 'tutor_line.urls'
 
@@ -79,7 +84,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'templates', 'allauth',)
+            os.path.join(BASE_DIR, 'templates')#, 'allauth',)
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -93,13 +98,13 @@ TEMPLATES = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = [
-    # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
+# AUTHENTICATION_BACKENDS = [
+#     # Needed to login by username in Django admin, regardless of `allauth`
+#     'django.contrib.auth.backends.ModelBackend',
 
-    # `allauth` specific authentication methods, such as login by email
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
+#     # `allauth` specific authentication methods, such as login by email
+#     'allauth.account.auth_backends.AuthenticationBackend',
+# ]
 
 WSGI_APPLICATION = 'tutor_line.wsgi.application'
 
