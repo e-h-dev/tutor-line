@@ -40,28 +40,41 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    #'allauth',
-    #'allauth.account',
+    'django_extensions',
+    'allauth',
+    'allauth.account',
     'home',
 
     # socialaccounts.
-    #'allauth.socialaccount',
+    'allauth.socialaccount',
     #'allauth.socialaccount.providers.google',
 ]
 
 SITE_ID = 1
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"
-# ACCOUNT_AUTHENTICATION_METHOD = "username_email"
-# ACCOUNT_SIGNUP_FIELDS = ['email', 'username', 'password1', 'password2']
-# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-# ACCOUNT_USERNAME_MIN_LENGTH = 4
-# ACCOUNT_SIGNUP_EMAIL_TWICE = True
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+ACCOUNT_SIGNUP_FIELDS = ['email', 'username', 'password1', 'password2']
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+ACCOUNT_SIGNUP_EMAIL_TWICE = True
+ACCOUNT_EMAIL_REQUIRED = True
 
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
+
+# MIDDLEWARE = [
+#     'django.middleware.security.SecurityMiddleware',
+#     'django.contrib.sessions.middleware.SessionMiddleware',
+#     'django.middleware.common.CommonMiddleware',
+#     'django.middleware.csrf.CsrfViewMiddleware',
+#     'django.contrib.auth.middleware.AuthenticationMiddleware',
+#     'django.contrib.messages.middleware.MessageMiddleware',
+#     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+#     # Account middleware:
+#     # "allauth.account.middleware.AccountMiddleware",
+# ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -71,10 +84,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # Account middleware:
-    #"allauth.account.middleware.AccountMiddleware",
 ]
-
 
 
 ROOT_URLCONF = 'tutor_line.urls'
@@ -98,15 +108,15 @@ TEMPLATES = [
     },
 ]
 
-# AUTHENTICATION_BACKENDS = [
-#     # Needed to login by username in Django admin, regardless of `allauth`
-#     'django.contrib.auth.backends.ModelBackend',
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
 
-#     # `allauth` specific authentication methods, such as login by email
-#     'allauth.account.auth_backends.AuthenticationBackend',
-# ]
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
-WSGI_APPLICATION = 'tutor_line.wsgi.application'
+# WSGI_APPLICATION = 'tutor_line.wsgi.application'
 
 
 # Database
