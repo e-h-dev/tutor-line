@@ -8,7 +8,7 @@
 }
 
 a {
-    /* text-decoration: none !important; */
+    text-decoration: none !important;
     color: var(--drk-clr) !important;
     outline: none !important;
     text-underline-offset: 10px;
@@ -68,6 +68,10 @@ ul,
 .nav-options{
     position: relative;
     left:50px;
+}
+
+li:hover{
+    color:hsl(0, 0%, 30%)
 }
 
 #sign-in-dropdown{
