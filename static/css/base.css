@@ -123,11 +123,11 @@ ul,
     
 }
 
-/* .menu-bars{
+footer{
     position: relative;
-    left:20px;
-} */
-
+    z-index: 5;
+    color:var(--bg-clr)
+}
 
 /* -------------------home page styles */
 
