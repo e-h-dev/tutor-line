@@ -4,6 +4,7 @@
     --opaque:rgba(122, 46, 46, 0.8);
     --drk-clr:#7a2e2e;
     --ylw-clr:#F4B400;
+    --ylw-opaque:rgba(244, 180, 0, 0.6);
     --light-opaque:rgba(255, 253, 250, 0.8);
     --light-opaque-1:rgba(255, 253, 250, 0.6);
     --light-opaque-2:rgba(255, 253, 250, 0.4);
@@ -162,4 +163,34 @@ ul,
     background-color: var(--light-opaque-2);
     padding:20px;
     margin-top: 20px;
+}
+
+.empty-row{
+    height:80px;
+}
+
+#subjects{
+    position: relative;
+    z-index: 5;
+    color:var(--bg-clr);
+    font-size: 2rem;
+    text-align: center;
+}
+
+.subject-box{
+    background-color: var(--light-opaque-2);
+    text-align: center;
+    margin-left: 10px;
+    padding-top: 20px;
+    height:100px;
+    position: relative;
+    z-index: 5;
+    color:var(--bg-clr);
+    font-family: var(--main-font);
+    border-radius: 10px;
+}
+
+.subject-box:hover{
+    background-color: var(--ylw-opaque);
+    color:var(--drk-clr)
 }
