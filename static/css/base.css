@@ -3,13 +3,14 @@
     --bg-clr:#fffdfa;
     --opaque:rgba(122, 46, 46, 0.8);
     --drk-clr:#7a2e2e;
+    --ylw-clr:#F4B400;
     --light-opaque:rgba(255, 253, 250, 0.8);
     --main-font:"Schibsted Grotesk", sans-serif;
 }
 
 a {
     text-decoration: none !important;
-    color: var(--drk-clr) !important;
+    color: inherit !important;
     outline: none !important;
     text-underline-offset: 10px;
 }
@@ -54,7 +55,7 @@ html body{
 .logo-txt{
     font-weight: 800;
     position:relative;
-    top:9px;
+    top:0;
     right:4px;
 }
 
@@ -68,11 +69,15 @@ ul,
 .nav-options{
     position: relative;
     left:50px;
+    top:5px;
+    color:var(--drk-clr)
 }
 
-li:hover{
-    color:hsl(0, 0%, 30%)
+.nav-select:hover{
+    color:var(--ylw-clr);
+    font-weight:100;
 }
+
 
 #sign-in-dropdown{
     margin-top: 24px;
@@ -103,7 +108,7 @@ li:hover{
 }
 
 .nav:hover{
-    border:solid 2px transparent;
+    border:solid 2px var(--ylw-clr);
     
 }
 
@@ -130,4 +135,13 @@ li:hover{
     background-color: var(--opaque);
     position: fixed;
     z-index: 3;
+}
+
+.hero-header{
+    position: relative;
+    z-index: 5;
+    font-family: var(--main-font);
+    color:var(--drk-clr);
+    text-align: center;
+    background-color: var(--light-opaque);
 }
