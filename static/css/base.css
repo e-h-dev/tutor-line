@@ -137,11 +137,11 @@ ul,
     z-index: 3;
 }
 
-.hero-header{
+.hero-txt{
     position: relative;
     z-index: 5;
     font-family: var(--main-font);
-    color:var(--drk-clr);
+    color:var(--bg-clr);
     text-align: center;
-    background-color: var(--light-opaque);
+    /* background-color: var(--light-opaque); */
 }
