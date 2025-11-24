@@ -191,12 +191,20 @@ footer{
     color:var(--bg-clr);
     font-family: var(--main-font);
     border-radius: 10px;
+    
+    /* object-fit: fill;
+    zoom:20%; */
+}
+
+.subject-icon{
+    font-size: 2rem;
 }
 
 .subject-box:hover{
     background-color: var(--ylw-opaque);
     color:var(--drk-clr)
 }
+
 
 .behind{
     position: relative;
