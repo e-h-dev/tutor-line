@@ -2,6 +2,7 @@
 :root{
     --bg-clr:#fffdfa;
     --opaque:rgba(122, 46, 46, 0.8);
+    --comp-opaque:rgba(122, 46, 46, 0);
     --drk-clr:#7a2e2e;
     --ylw-clr:#F4B400;
     --ylw-opaque:rgba(244, 180, 0, 0.6);
@@ -126,11 +127,19 @@ ul,
     
 }
 
-footer{
+/* footer */
+
+.footer-area{
     position: relative;
     z-index: 5;
-    color:var(--bg-clr)
+    color:var(--drk-clr);
+    background-color: var(--light-opaque);
+    padding:50px;
+    border-top:var(--ylw-clr) solid 3px;
+    border-left:var(--ylw-clr) solid 3px;
+    border-top-left-radius: 10px;
 }
+
 
 /* -------------------home page styles */
 
