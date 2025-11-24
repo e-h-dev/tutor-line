@@ -177,6 +177,14 @@ ul,
     margin-top: 20px;
 }
 
+/* .info-col-opaque{
+    height:200px;
+    width:200px;
+    position: relative;
+    z-index: 2;
+    background-color: rgba(244, 180, 0, 0.4);
+} */
+
 .empty-row{
     height:80px;
 }
