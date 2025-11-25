@@ -95,17 +95,15 @@
 
         if (document.documentElement.scrollTop > 250 ){
             header2.style.fontSize = "2rem";
-            header2.style.marginTop = "300px";
+            header2.style.marginTop = "150px";
             infoCol.style.backgroundColor = "var(--ylw-clr)";
             infoCol.style.color = "var(--drk-clr)"
         }
-        else if(document.documentElement.scrollTop > 300){
-                header2.style.marginTop = "300px";
-                header2.style.fontSize = "4rem";
-        }
         else{
             header2.style.fontSize = "1rem";
-            header2.style.marginTop = "10px"
+            header2.style.marginTop = "10px";
+            infoCol.style.backgroundColor = "var(--light-opaque-2)";
+            infoCol.style.color = "var(--bg-clr)"
         }
     }
 </script>
