@@ -18,13 +18,13 @@
                     <div class="col-8 hero-prgrph mt-3 p-3">
                         <h2 class="small-txt" id="header-2">Welcome to tutorline, your place to connect with qualified tutors and teachers.</h2>
                         <div class="row">
-                            <div class="col-5 info-col">
+                            <div class="col-5 info-col" id="info-col">
                                 <div class="info-col-opaque"></div>
                                 <h3>Students:</h3>
                                 <p>Browse subjects, compare educator profiles, and choose the right fit for your learning needs.</p>
                             </div>
                             <div class="col-2"></div>
-                            <div class="col-5 info-col" id="info-col">
+                            <div class="col-5 info-col" id="info-col-right">
                                 <h3>Educators:</h3>
                                 <p>Create your profile to share your expertise and set your rates.
                                Our platform makes it simple — search, connect, and start learning or teaching with confidence.</p>
@@ -92,18 +92,25 @@
 
         let header2 = document.getElementById("header-2");
         let infoCol = document.getElementById("info-col");
+        let infoRight = document.getElementById("info-col-right");
 
-        if (document.documentElement.scrollTop > 250 ){
+        if (document.documentElement.scrollTop > 300 ){
             header2.style.fontSize = "2rem";
-            header2.style.marginTop = "150px";
-            infoCol.style.backgroundColor = "var(--ylw-clr)";
-            infoCol.style.color = "var(--drk-clr)"
+            header2.style.animation = "space-enlarge 2s";
+            header2.style.marginTop = "250px";
+            infoRight.style.backgroundColor = infoCol.style.backgroundColor = "var(--ylw-clr)";
+            infoRight.style.color = infoCol.style.color = "var(--drk-clr)";
+            infoRight.style.animation = infoCol.style.animation = "col-open 2s";
+            infoRight.style.height = infoCol.style.height = "400px"
         }
         else{
             header2.style.fontSize = "1rem";
+            header2.style.animation = "space-minimise 2s"
             header2.style.marginTop = "10px";
-            infoCol.style.backgroundColor = "var(--light-opaque-2)";
-            infoCol.style.color = "var(--bg-clr)"
+            infoRight.style.backgroundColor = infoCol.style.backgroundColor = "var(--light-opaque-2)";
+            infoRight.style.color = infoCol.style.color = "var(--bg-clr)";
+            infoRight.style.animation = infoCol.style.animation = "col-close 2s"
+            infoRight.style.height = infoCol.style.height = "200px";
         }
     }
 </script>
