@@ -175,7 +175,9 @@ ul,
     background-color: var(--light-opaque-2);
     padding:20px;
     margin-top: 20px;
-    height:200px;
+    height:190px;
+    overflow: hidden;
+    text-align: justify;
 }
 
 @keyframes space-enlarge{
@@ -201,11 +203,11 @@ ul,
 
 @keyframes col-open{
   0%{
-     height:200px;
+     height:190px;
   }
 
   100%{
-     height:400px;
+     height:500px;
   }
 }
 
