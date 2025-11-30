@@ -6,17 +6,20 @@
 {% block extra_title %} - Sign in {% endblock %}
 
 {% block content %}
-
-<div class="sign-in-up-box shadow">
-    <h1>{% trans "Sign In" %}</h1>
-
-    <div class="row">
-      <div class="col-6 social-sign-border">
-
-        {% get_providers as socialaccount_providers %}
+<div class="container-fluid sign-in-form">
+  <div class="row mt-5"></div>
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4"><h1>{% trans "Sign In" %}</h1></div>
+    <div class="col-4"></div>
+  </div>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-4 social-sign-in">
+      {% get_providers as socialaccount_providers %}
 
         {% if socialaccount_providers %}
-        <!-- <p>Please sign in.</p> -->
+        <p>Please sign in.</p>
 
         <div class="socialaccount_ballot social-styles">
 
@@ -46,9 +49,8 @@
         </div>
 
         {% include "socialaccount/snippets/login_extra.html" %}
-
-      </div>
-    <div class="col-6">
+    </div>
+    <div class="col-4">
         {% else %}
         <p>{% blocktrans %}If you have not created an account yet, then please
         <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
@@ -61,9 +63,10 @@
           <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
           {% endif %}
           <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-          <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+          <button class="btn primaryAction" type="submit">{% trans "Sign In" %}</button>
         </form>
-      </div>
     </div>
+    <div class="col-2"></div>
+  </div>
 </div>
 {% endblock %}

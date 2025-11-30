@@ -1,6 +1,6 @@
 /* -------------------------root styles */
 :root{
-    --bg-clr:#fffdfa;
+    --light-clr:#fdfaff;
     --opaque:rgba(122, 46, 46, 0.8);
     --comp-opaque:rgba(122, 46, 46, 0);
     --drk-clr:#7a2e2e;
@@ -40,7 +40,7 @@ hr{
 .my-btn{
     font-family: var(--main-font) !important;
     border-radius: 10px !important;
-    color:var(--bg-clr) !important;
+    color:var(--light-clr) !important;
     background-color: var(--drk-clr) !important;
     font-size: 1.2rem;
     position: relative;
@@ -50,13 +50,13 @@ hr{
 
 .my-btn:hover{
     color:var(--dark-clr) !important;
-    background-color: var(--bg-clr) !important;
+    background-color: var(--light-clr) !important;
 }
 
 /* base styles */
 
 html body{
-    background-color: var(--bg-clr);
+    background-image: linear-gradient(to bottom right, #e6cbcb, var(--light-clr));
 }
 
 .above-nav{
@@ -72,7 +72,7 @@ html body{
     background-color:var(--light-opaque);
     padding-top:18px;
     border-radius: 9999px;
-    border:solid 2px var(--bg-clr);
+    border:solid 2px var(--light-clr);
     position: relative;
     z-index: 4;
     font-family:var(--main-font);
@@ -120,7 +120,7 @@ ul,
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     background-color: var(--drk-clr);
-    color:var(--bg-clr);
+    color:var(--light-clr);
     position: relative;
     z-index: 6;
     display: none;
@@ -203,7 +203,7 @@ footer li{
     position: relative;
     z-index: 5;
     font-family: var(--main-font);
-    color:var(--bg-clr);
+    color:var(--light-clr);
     text-align: center;
     /* background-color: var(--light-opaque); */
 }
@@ -275,7 +275,7 @@ footer li{
 #subjects{
     position: relative;
     z-index: 5;
-    color:var(--bg-clr);
+    color:var(--light-clr);
     font-size: 2rem;
     text-align: center;
 }
@@ -288,7 +288,7 @@ footer li{
     height:100px;
     position: relative;
     z-index: 5;
-    color:var(--bg-clr);
+    color:var(--light-clr);
     font-family: var(--main-font);
     border-radius: 10px;
     
@@ -309,4 +309,13 @@ footer li{
 .behind{
     position: relative;
     z-index: 3;
+}
+
+
+.sign-in-form{
+    padding-top: 20px;
+    height:auto;
+    width:auto;
+    color:var(--drk-clr);
+    font-family: var(--main-font);
 }
