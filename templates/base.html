@@ -30,6 +30,15 @@
     {% block homebody %}
     {% endblock %}
     <header>
+      <div class="sign-out-message" id="logout-btn">
+        <h3>Are you sure you want to Sign Out?</h3>
+        <form class="sign-form" method="POST" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+          <button class="btn primaryAction" type="submit">Yes</button>
+          <div class="btn primaryAction" onclick="closeLogout()">Cancel</div>
+        </form>
+      </div>
       <div class="container-fluid">
         <div class="row above-nav"></div>
         <div class="row">
@@ -47,12 +56,7 @@
                   {% if request.user.is_authenticated %}
                   <p>{{ user.username }}</p>
                   <div id="sign-in-dropdown">
-                      <form class="sign-form" method="POST" action="{% url 'account_logout' %}">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <button class="btn primaryAction" type="submit">Sign Out</button>
-                      </form>
-                  <p class="nav-select" id="logout-btn">Logout</p>
+                  <p class="nav-select logout-btn" onclick="revealLogout()">Logout</p>
                   </div>
                   {% else %}
                   <i class="fa-solid fa-user"></i>
@@ -122,6 +126,17 @@
         </div>
       </div>
     </footer>
+    <script>
+      let logOut = document.getElementById("logout-btn");
+
+      function revealLogout(){
+        logOut.style.display = "block";
+      }
+
+      function closeLogout(){
+        logOut.style.display = "none";
+      }
+    </script>
     {% block postloadjs %}
     {% endblock %}
   </body>

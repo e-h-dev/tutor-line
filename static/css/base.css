@@ -149,6 +149,16 @@ ul,
     
 }
 
+.logout-btn{
+    cursor: pointer;
+}
+
+.menu-bars{
+    position: absolute;
+    left:570px;
+    font-size: 1.2rem;
+}
+
 /* footer */
 
 .footer-area{
@@ -318,4 +328,18 @@ footer li{
     width:auto;
     color:var(--drk-clr);
     font-family: var(--main-font);
+}
+
+.sign-out-message{
+    background-color: var(--light-clr);
+    width:500px;
+    height:150px;
+    padding:20px;
+    color:var(--drk-clr);
+    border-radius: 20px;
+    position: absolute;
+    z-index: 7;
+    left:30%;
+    top:20%;
+    display:none;
 }
