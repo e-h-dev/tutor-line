@@ -101,6 +101,11 @@
               <li><a href="">Create Tutor Profile</a></li>
               <li><a href="">About</a></li>
               <li><a href="">Contact</a></li>
+              {% if request.user.is_authenticated %}
+              <li><a href="" onclick="revealLogout()">Logout</a></li>
+              {% else %}
+              <li><a href="{% url 'account_login' %}">Login</a></li>
+              {% endif %}
             </ul>
           </div>
           <div class="col-2">
