@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extracss%}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
 {% block homebody %}
 <div class="hero-opaque"></div>
 <img src="/media/hero.gif" alt="tutor line" class="hero-img">
