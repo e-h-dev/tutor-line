@@ -39,7 +39,7 @@
             {% csrf_token %}
             {{ form.as_p }}
           <button class="btn primaryAction" type="submit">Yes</button>
-          <div class="btn primaryAction" onclick="closeLogout()">Cancel</div>
+          <p class="btn primaryAction mt-3" role="button" onclick="closeLogout()">Cancel</p>
         </form>
       </div>
       <div class="container-fluid">
@@ -57,21 +57,15 @@
                 <li class="nav-select"><a href="">Create Tutor Profile</a></li>
                 <li class="sign-in">
                   {% if request.user.is_authenticated %}
-                  <p>{{ user.username }}</p>
+                  <p><strong>Hi!</strong> {{ user.username }}</p>
                   <div id="sign-in-dropdown">
-                  <p class="nav-select logout-btn" onclick="revealLogout()">Logout</p>
+                   <button class="nav-select btn logout-btn" onclick="revealLogout()">Logout</button>
                   </div>
                   {% else %}
                   <i class="fa-solid fa-user"></i>
                    <a href="{% url 'account_login' %}">Login/SignUp</a>
-                  <!-- <div id="sign-in-dropdown">
-                      <p class="nav-select"><a href="{% url 'account_login' %}">Login</a></p>
-                      <p class="nav-select"><a href="">SignUp</a></p>
-                  </div> -->
-                  
                   {% endif %}
                 </li>
-                <li class="menu-bars nav-select"><a href=""><i class="fa-solid fa-bars"></i></a></li>
               </span>
             </ul>
           </div>
