@@ -1,0 +1,43 @@
+/* removes bootstrap button outline */
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn-btn{
+    /* color:var(--drk-clr) !important;
+    background-color: var(--light-clr) !important; */
+    color:var(--light-clr) !important;
+    background-color: var(--drk-clr) !important;
+    border: var(--drk-clr) outset 3px !important;
+    border-radius: 5px !important;
+}
+
+.btn-btn:hover{
+    /* color:var(--light-clr) !important;
+    background-color: var(--drk-clr) !important; */
+    
+}
+
+.btn-btn:active:focus,
+.btn.active:focus{
+    border: var(--drk-clr) outset 0.5px !important;
+}
+
+.logout-btn{
+    color:var(--light-clr) !important;
+}
+
+.logout-btn:hover{
+    color:var(--ylw-clr) !important;
+}
+.sbmt-btn{
+
+}
+
+.close-btn{
+
+}

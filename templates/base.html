@@ -10,6 +10,7 @@
 
     {% block corecss %}
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="icon" href="/media/logo.ico">
@@ -35,18 +36,28 @@
     <header>
       <div class="sign-out-message" id="logout-btn">
         <h3>Are you sure you want to Sign Out?</h3>
-        <form class="sign-form" method="POST" action="{% url 'account_logout' %}">
+        <div class="row mt-3">
+          <div class="col-2"></div>
+          <div class="col-2">
+            <form class="sign-form" method="POST" action="{% url 'account_logout' %}">
             {% csrf_token %}
             {{ form.as_p }}
-          <button class="btn primaryAction" type="submit">Yes</button>
-          <p class="btn primaryAction mt-3" role="button" onclick="closeLogout()">Cancel</p>
-        </form>
+              <button class="btn btn-btn primaryAction" type="submit">Ok</button>
+            </form>
+          </div>
+          <div class="col-2">
+            <button class="btn btn-btn ml-6" role="button" onclick="closeLogout()">Cancel</button>
+          </div>
+          <div class="col-2"></div>
+          <div class="col-2"></div>
+          <div class="col-2"></div>
+        </div>
       </div>
       <div class="container-fluid">
         <div class="row above-nav"></div>
         <div class="row">
           <div class="col-1 col-lg-2"></div>
-          <div class="col-10 col-lg-8 nav">
+          <div class="col-10 col-lg-8 nav" id="nav">
             <ul>
               <li><a href="{% url 'home' %}">
                 <img src="/media/logo.png" alt="logo" class="logo"><span class="logo-txt">TutorLine</span>
@@ -102,7 +113,7 @@
               <li><a href="">About</a></li>
               <li><a href="">Contact</a></li>
               {% if request.user.is_authenticated %}
-              <li><a href="" onclick="revealLogout()">Logout</a></li>
+              <li><a href="#nav" role="button" onclick="revealLogout()">Logout</a></li>
               {% else %}
               <li><a href="{% url 'account_login' %}">Login</a></li>
               {% endif %}
