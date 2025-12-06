@@ -8,8 +8,6 @@
 }
 
 .btn-btn{
-    /* color:var(--drk-clr) !important;
-    background-color: var(--light-clr) !important; */
     color:var(--light-clr) !important;
     background-color: var(--drk-clr) !important;
     border: var(--drk-clr) outset 3px !important;
@@ -17,14 +15,14 @@
 }
 
 .btn-btn:hover{
-    /* color:var(--light-clr) !important;
-    background-color: var(--drk-clr) !important; */
-    
+    background-color: #7a4040 !important;
+    border: #7a4040 outset 3px !important;
 }
 
 .btn-btn:active:focus,
 .btn.active:focus{
     border: var(--drk-clr) outset 0.5px !important;
+    background-color: var(--ylw-clr) !important;
 }
 
 .logout-btn{
