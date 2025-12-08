@@ -2,14 +2,24 @@
 {% load static %}
 
 {% block extracss%}
-
+<link rel="stylesheet" href="{% static 'css/tutors.css' %}">
 {% endblock %}
 
 {% block extra_title %} - Tutors {% endblock %}
 
 
 {% block content %}
-    <h1>Welcome to tutors page</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-5">
+                <div class="search-bar">
+                    <input type="text" class="search-input">Magnifine glass
+                </div>
+            </div>
+            <div class="col-5"></div>
+        </div>
+    </div>
 {% endblock %}
 {% block postloadjs %}
 

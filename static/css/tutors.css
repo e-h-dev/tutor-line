@@ -1,0 +1,10 @@
+.search-bar{
+    height:20px;
+    width:100%;
+}
+
+.search-input{
+    border:solid 1px var(--light-clr);
+    border-radius: 20px;
+    color:var(--drk-clr);
+}
