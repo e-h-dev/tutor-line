@@ -1,10 +1,76 @@
+h1{
+    text-align: center;
+    font-family: var(--main-font);
+    color:var(--drk-clr);
+    margin-top: 40px;
+}
+
 .search-bar{
-    height:20px;
+    height:50px;
     width:100%;
+    color:var(--drk-clr);
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.search-bar i{
+    position: relative;
+    left:500px;
+    bottom:55px;
+    cursor: pointer;
+}
+
+.search-bar i:hover{
+    font-size: 1.5rem;
+}
+
+.search-bar i:focus{
+    color:var(--ylw-clr);
 }
 
 .search-input{
     border:solid 1px var(--light-clr);
-    border-radius: 20px;
     color:var(--drk-clr);
+    font-weight: bold;
+    border-radius: 40px;
+    height: 60px;
+    width:100%;
+    display: block;
+    margin-bottom: 0.5em;
+    outline: none;
+    box-shadow: none;
+    padding: 0.5em;
+    background-color: var(--light-opaque);
+}
+
+.search-input:focus{
+    background-color: var(--light-opaque-1);
+}
+
+.tutor-card{
+    width:350px;
+    height:300px;
+    position: relative;
+    left:50px;
+    background-color: var(--light-opaque);
+    font-family: var(--main-font);
+    padding:20px;
+    border:solid 1px var(--light-clr);
+    border-radius: 20px;
+    color:var(--drk-clr)
+}
+
+.image{
+    background-color: blueviolet;
+    width:300px;
+    height:100px;
+    margin:10px;
+}
+
+h3{
+    text-align: center;
+}
+
+p{
+    font-size: 1.1rem;
 }
