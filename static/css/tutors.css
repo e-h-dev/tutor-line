@@ -52,7 +52,7 @@ h1{
 
 .tutor-card{
     width:250px;
-    height:450px;
+    height:400px;
     position: relative;
     z-index: 20;
     left:20px;
@@ -68,38 +68,41 @@ h1{
 
 .tutor-card:hover{
     width: 251px;
-    height:453px;
+    height:402px;
     left:19px;
     border:solid 3px var(--ylw-clr);
 }
 
-.image-opaque{
-    background-color:rgba(122, 46, 46, 0.4);
+/* .image-opaque{
+    background-color:rgba(122, 46, 46, 0.2);
     position: absolute;
     z-index: 8;
-    width:200px;
-    height:200px;
+    width:150px;
+    height:150px;
     border-radius: 50%;
-}
+} */
 
 .image{
-    width:200px;
-    height:250px;
+    display: flex;
+    justify-content:center;
+    width:150px;
+    height:150px;
     border-radius: 50%;
     position: relative;
-    bottom:30px;
+    /* bottom:10px; */
 }
 
 .price-stamp{
     position:absolute;
-    bottom:250px;
-    left:130px;
+    bottom:200px;
+    left:170px;
     z-index: 10;
     padding:5px;
     font-size: 0.9rem;
     border-radius: 20px;
     font-weight: 700;
-    background-color: var(--opaque);
+    background-color: var(--light-opaque);
+    color:var(--drk-clr);
 }
 
 .per-hr{
@@ -108,7 +111,7 @@ h1{
 
 .details{
     position: relative;
-    bottom:40px;
+    top:20px;
 }
 
 
@@ -118,4 +121,9 @@ h3{
 
 p{
     font-size: 1.1rem;
+}
+
+.stars{
+    font-size: 0.8rem;
+    color:var(--ylw-clr);
 }
