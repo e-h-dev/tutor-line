@@ -51,24 +51,66 @@ h1{
 }
 
 .tutor-card{
-    width:350px;
-    height:300px;
+    width:250px;
+    height:450px;
     position: relative;
-    left:50px;
-    background-color: var(--light-opaque);
+    z-index: 20;
+    left:20px;
+    background-color: var(--drk-clr);
     font-family: var(--main-font);
     padding:20px;
-    border:solid 1px var(--light-clr);
+    border:solid 3px var(--light-opaque-1);
     border-radius: 20px;
-    color:var(--drk-clr)
+    color:var(--light-clr);
+    cursor: pointer;
+    margin-bottom:20px;
+}
+
+.tutor-card:hover{
+    width: 251px;
+    height:453px;
+    left:19px;
+    border:solid 3px var(--ylw-clr);
+}
+
+.image-opaque{
+    background-color:rgba(122, 46, 46, 0.4);
+    position: absolute;
+    z-index: 8;
+    width:200px;
+    height:200px;
+    border-radius: 50%;
 }
 
 .image{
-    background-color: blueviolet;
-    width:300px;
-    height:100px;
-    margin:10px;
+    width:200px;
+    height:250px;
+    border-radius: 50%;
+    position: relative;
+    bottom:30px;
 }
+
+.price-stamp{
+    position:absolute;
+    bottom:250px;
+    left:130px;
+    z-index: 10;
+    padding:5px;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    font-weight: 700;
+    background-color: var(--opaque);
+}
+
+.per-hr{
+    font-size: 0.7rem;
+}
+
+.details{
+    position: relative;
+    bottom:40px;
+}
+
 
 h3{
     text-align: center;
