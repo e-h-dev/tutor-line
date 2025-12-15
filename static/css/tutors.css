@@ -52,7 +52,7 @@ h1{
 
 .tutor-card{
     width:250px;
-    height:400px;
+    height:430px;
     position: relative;
     z-index: 20;
     left:20px;
@@ -68,7 +68,7 @@ h1{
 
 .tutor-card:hover{
     width: 251px;
-    height:402px;
+    height:428px;
     left:19px;
     border:solid 3px var(--ylw-clr);
 }
@@ -94,7 +94,7 @@ h1{
 
 .price-stamp{
     position:absolute;
-    bottom:200px;
+    bottom:230px;
     left:170px;
     z-index: 10;
     padding:5px;
@@ -121,6 +121,10 @@ h3{
 
 p{
     font-size: 1.1rem;
+}
+
+.date-tag{
+    font-size: 0.7rem;
 }
 
 .stars{
