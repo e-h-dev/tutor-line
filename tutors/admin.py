@@ -3,6 +3,7 @@ from . models import Tutors, Location, Category
 
 # Register your models here.
 
+
 class LocationAdmin(admin.ModelAdmin):
     list_display = (
         'name',
@@ -21,6 +22,8 @@ class TutorAdmin(admin.ModelAdmin):
         'location',
         'category',
         'date_added',
+        'subject',
+        'price',
         'active',
         'description',
         'email',
@@ -30,6 +33,7 @@ class TutorAdmin(admin.ModelAdmin):
         'image',
         'is_male'
     )
+
 
 admin.site.register(Location, LocationAdmin)
 admin.site.register(Category, CategoryAdmin)

@@ -44,12 +44,14 @@ class Tutors(models.Model):
     category = models.ForeignKey('Category', null=True, blank=True,
                                  on_delete=models.SET_NULL)
     date_added = models.DateField(auto_now=True)
+    subject = models.CharField(max_length=254, default='Chumash')
+    price = models.IntegerField(default=12.5)
     active = models.BooleanField(default=True)
     description = models.TextField()
     email = models.EmailField()
     phone = models.CharField(max_length=14)
     rating = models.IntegerField()
-    reviews = models.TextField()
+    reviews = models.TextField(blank=True, null=True)
     image = models.ImageField(blank=True, null=True)
     is_male = models.BooleanField()
 
