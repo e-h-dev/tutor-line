@@ -51,14 +51,15 @@
                                              : {% if tutor.active == True %}Available{% else %}Unavailable{% endif %}
                                         </p>
                                         <p>
-                                            Rating : 
-                                            <i class="fa-solid fa-star stars"></i>
+                                            Rating : {{ tutor.rating }}
+                                            <!-- <i class="fa-solid fa-star stars"></i>
                                             <i class="fa-solid fa-star stars"></i>
                                             <i class="fa-solid fa-star stars"></i>
                                             <i class="fa-solid fa-star-half-stroke stars"></i>
-                                            <i class="fa-regular fa-star stars"></i>
+                                            <i class="fa-regular fa-star stars"></i> -->
                                         </p>
                                         <p class="date-tag">Date Added: {{ tutor.date_added }}</p>
+                                        <p class="category-tag"><i class="fa-solid fa-bookmark"></i> Category: <strong>{{ tutor.category }}</strong></p>
                                     </div>
                                 </div>
                             </a>
