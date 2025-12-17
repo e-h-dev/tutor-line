@@ -50,7 +50,7 @@ class Tutors(models.Model):
     phone = models.CharField(max_length=14)
     rating = models.IntegerField()
     reviews = models.TextField()
-    image = models.ImageField()
+    image = models.ImageField(blank=True, null=True)
     is_male = models.BooleanField()
 
     def __str__(self):
