@@ -131,6 +131,10 @@ p{
     font-size: 0.7rem;
 }
 
+.no-rating{
+    font-size: 0.5rem;
+}
+
 .stars{
     font-size: 0.8rem;
     color:var(--ylw-clr);
