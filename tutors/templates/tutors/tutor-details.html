@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extracss%}
+<link rel="stylesheet" href="{% static 'css/tutors.css' %}">
+{% endblock %}
+
+{% block extra_title %} - {{ tutor.name }} {% endblock %}
+
+
+{% block content %}
+<h1>{{ tutor.name }}</h1>
+<h3><a href="{% url 'tutors' %}"><i class="fa-solid fa-chevron-left"></i> Back to tutors</a></h3>
+{% endblock %}
+{% block postloadjs %}
+
+{% endblock %}

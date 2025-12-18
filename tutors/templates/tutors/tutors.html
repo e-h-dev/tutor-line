@@ -30,7 +30,7 @@
                     <div class="row">
                         {% for tutor in tutors %}
                         <div class="col-4">
-                            <a href="">
+                            <a href="{% url 'tutor_details' tutor.id %}">
                                 <div class="tutor-card shadow">
                                     <div class="image-opaque"></div>
                                     {% if tutor.is_male == True %}
