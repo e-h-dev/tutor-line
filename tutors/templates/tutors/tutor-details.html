@@ -10,7 +10,38 @@
 
 {% block content %}
 <h1>{{ tutor.name }}</h1>
+<h2>{{ tutor.subject }}</h2>
 <h3><a href="{% url 'tutors' %}"><i class="fa-solid fa-chevron-left"></i> Back to tutors</a></h3>
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-3">
+                {% if tutor.image %}
+                <img src="{{ tutor.image.url }}" alt="{{ tutor.name }}">
+                {% endif %}
+            </div>
+            <div class="col-1"></div>
+            <div class="col-4">
+                <div class="description">
+                    <p>{{ tutor.description }}</p>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-6"></div>
+            <div class="col-4">
+                <div class="details">
+                    <p>{{ tutor.phone }}</p>
+                    <p>{{ tutor.email }}</p>
+                    <p>£{{ tutor.price }} per hour</p>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+</section>
 {% endblock %}
 {% block postloadjs %}
 
