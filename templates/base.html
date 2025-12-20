@@ -55,10 +55,13 @@
       </div>
       <div class="container-fluid">
         <div class="row above-nav"></div>
+        <!-- row with nav box -->
         <div class="row">
           <div class="col-1 col-lg-2"></div>
+          <!-- column of nav box -->
           <div class="col-10 col-lg-8 nav" id="nav">
-            <ul>
+            {% include 'base_includes/mobile_nav.html' %}
+            <ul class="d-none d-md-block">
               <li><a href="{% url 'home' %}">
                 <img src="/media/logo.png" alt="logo" class="logo"><span class="logo-txt">TutorLine</span>
               </a></li>

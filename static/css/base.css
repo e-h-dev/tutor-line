@@ -102,8 +102,8 @@ ul,
 
 .nav-options{
     position: relative;
-    left:50px;
-    top:5px;
+    left:200px;
+    bottom:33px;
     color:var(--drk-clr)
 }
 
