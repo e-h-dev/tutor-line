@@ -10,6 +10,7 @@
 
     {% block corecss %}
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="{% static 'css/mobile-base.css' %}">
         <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,9 +60,9 @@
         <div class="row">
           <div class="col-1 col-lg-2"></div>
           <!-- column of nav box -->
-          <div class="col-10 col-lg-8 nav" id="nav">
+          <div class="col-10 col-lg-8" id="nav">
             {% include 'base_includes/mobile_nav.html' %}
-            <ul class="d-none d-md-block">
+            <ul class="d-none d-md-block nav nav-desktop">
               <li><a href="{% url 'home' %}">
                 <img src="/media/logo.png" alt="logo" class="logo"><span class="logo-txt">TutorLine</span>
               </a></li>

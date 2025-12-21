@@ -66,8 +66,11 @@ html body{
     z-index: 4;
 }
 
-.nav{
+.nav-desktop{
     height:70px;
+}
+
+.nav{
     color:var(--drk-clr);
     background-color:var(--light-opaque);
     padding-top:18px;
@@ -83,6 +86,7 @@ html body{
     height:40px;
     position:relative;
     bottom:5px;
+    left:20px;
     z-index: 4;
 }
 
@@ -90,8 +94,9 @@ html body{
     font-weight: 800;
     position:relative;
     top:0;
-    right:4px;
+    left:16px;
 }
+
 
 ul,
 .nav-options{
