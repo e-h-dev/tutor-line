@@ -55,3 +55,17 @@
     padding-bottom: 10px;
 }
 
+/* styles for user section of menu when logged in */
+.account-menu{
+    background-color: var(--opaque);
+    color:var(--light-clr);
+    border-radius: 15px;
+    padding:10px;
+    margin:20px;
+    width:70%;
+    text-align: left;
+}
+
+.account-menu:hover{
+    color:var(--ylw-clr)
+}

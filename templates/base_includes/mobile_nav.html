@@ -23,9 +23,9 @@
         <li>
             {% if request.user.is_authenticated %}
             <p><strong>Hi!</strong> {{ user.username }}</p>
-            <div id="sign-in-dropdown">
+            <div class="account-menu">
             {% if user.is_authenticated and user.is_superuser %}
-                <p><a href="/admin/">Admin</a></p>
+                <button class="btn logout-btn"><a href="/admin/">Admin</a></button>
             {% endif %}
                 <button class="btn logout-btn" onclick="revealLogout()">Logout</button>
             </div>
