@@ -157,6 +157,19 @@
         logOut.style.display = "none";
       }
     </script>
+    <!-- js script for mobile menu dropdown -->
+
+    <script>
+      let menu = document.getElementById("mobile-menu-dropdown")
+
+      function showMenu(){
+        menu.style.display = "block"
+      }
+
+      function hideMenu(){
+        menu.style.display = "none"
+      }
+    </script>
     {% block postloadjs %}
     {% endblock %}
   </body>

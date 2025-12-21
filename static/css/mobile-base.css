@@ -31,9 +31,27 @@
     left:10px;
 }
 
+
 .mobile-nav-dropdown{
-    background-color: var(--light-opaque);
-    position: relative;
+    background-color: var(--ylw-clr);
+    color: var(--drk-clr);
+    width:70%;
+    font-family: var(--main-font);
+    text-align: left;
+    position: absolute;
+    left:25%;
+    padding:10px;
     z-index: 4;
+    border-radius: 15px;
+    border: 2px solid var(--light-clr);
+    display: none;
+}
+
+.mobile-nav-dropdown ul{
+    list-style: none;
+}
+
+.mobile-nav-dropdown li{
+    padding-bottom: 10px;
 }
 

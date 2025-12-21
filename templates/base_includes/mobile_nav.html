@@ -6,17 +6,18 @@
             <span class="logo-txt-mobile">TutorLine</span>
             </a>
         </li>
-        <li><a href=""><i class="fa-solid fa-bars menu-mobile"></i></a></li>
+        <li onclick="showMenu()"><i class="fa-solid fa-bars menu-mobile"></i></li>
     </span>
 </ul>
 <!-- menu dropdown for mobile -->
- <div class="d-block d-md-none mobile-nav-dropdown">
-    <!-- <ul> -->
-        <p>Find a tutor</p>
-        <p>Subjects</p>
-        <p>Create profile</p>
-        <p>Login</p>
-        <!-- <li><a href="{% url 'tutors' %}">Find a Tutor</a></li>
+ <div class="mobile-nav-dropdown" id="mobile-menu-dropdown" onmouseleave="hideMenu()">
+    <ul>
+        <!-- <li>Find a tutor</li>
+        <li>Subjects</li>
+        <li>Create profile</li>
+        <li>Login</li>
+    </ul> -->
+        <li><a href="{% url 'tutors' %}">Find a Tutor</a></li>
         <li><a href="#subjects">Subjects</a></li>
         <li><a href="">Create Tutor Profile</a></li>
         <li>
@@ -32,6 +33,6 @@
             <i class="fa-solid fa-user"></i>
             <a href="{% url 'account_login' %}">Login/SignUp</a>
             {% endif %}
-        </li> -->
-    <!-- </ul> -->
+        </li>
+    </ul>
  </div>
