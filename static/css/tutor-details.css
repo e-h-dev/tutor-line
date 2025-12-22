@@ -1,0 +1,43 @@
+h2, h3, h5{
+    color:var(--drk-clr);
+    font-family: var(--main-font);
+}
+
+h2, h3{
+    text-align: center;
+}
+
+
+.description, .details{
+    background-color: var(--light-opaque);
+    color:var(--drk-clr);
+    font-family: var(--main-font);
+    padding:20px;
+    border: solid 2px var(--opaque);
+    border-radius: 15px;
+}
+
+.image-box{
+    padding:20px;
+    width:100%;
+    background-image: linear-gradient(to bottom left, var(--drk-clr), var(--ylw-clr));
+    border: solid 2px var(--light-clr);
+    border-radius: 15px;
+    font-family: var(--main-font);
+    color: var(--light-clr);
+}
+
+.tutor-image{
+    height:200px;
+    width:200px;
+    border-radius: 50%;
+    position: relative;
+    top:10px;
+    right:20px;
+    
+}
+
+.b-c-email{
+    font-size: 0.7rem;
+    overflow:hidden;
+}

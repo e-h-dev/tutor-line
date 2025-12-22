@@ -3,6 +3,7 @@
 
 {% block extracss%}
 <link rel="stylesheet" href="{% static 'css/tutors.css' %}">
+<link rel="stylesheet" href="{% static 'css/tutor-details.css' %}">
 {% endblock %}
 
 {% block extra_title %} - {{ tutor.name }} {% endblock %}
@@ -11,34 +12,59 @@
 {% block content %}
 <h1>{{ tutor.name }}</h1>
 <h2>{{ tutor.subject }}</h2>
-<h3><a href="{% url 'tutors' %}"><i class="fa-solid fa-chevron-left"></i> Back to tutors</a></h3>
 <section>
     <div class="container-fluid">
         <div class="row">
+            <div class="col-1"></div>
+            <div class="col-4">
+                <h5><a href="{% url 'tutors' %}"><i class="fa-solid fa-chevron-left"></i> Back to tutors</a></h5>
+            </div>
+            <div class="col-7"></div>
+        </div>
+        <div class="row">
             <div class="col-2"></div>
-            <div class="col-3">
-                {% if tutor.image %}
-                <img src="{{ tutor.image.url }}" alt="{{ tutor.name }}">
-                {% endif %}
+            <div class="col-4">
+                <div class="row image-box">
+                    <div class="col-6">
+                        {% if tutor.image %}
+                        <img src="{{ tutor.image.url }}" class="tutor-image"  alt="{{ tutor.name }}">
+                        {% else %}
+                            {% if tutor.is_male == True %}
+                            <img src="/media/placeholder_male2.png" class="tutor-image" alt="{{ tutor.name }}">
+                            {% else %}
+                            <img src="/media/placeholder_female.png" class="tutor-image"  alt="{{ tutor.name }}">
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="col-6 mt-5 pt-5">
+                        <h4>{{ tutor.name }}</h4>
+                        <h5>{{ tutor.subject }}</h5>
+                        <p class="b-c-email">{{ tutor.email }}</p>
+                    </div>
+                </div>
             </div>
             <div class="col-1"></div>
             <div class="col-4">
-                <div class="description">
+                <div class="description shadow">
                     <p>{{ tutor.description }}</p>
                 </div>
             </div>
-            <div class="col-2"></div>
+            <div class="col-1"></div>
         </div>
         <div class="row">
-            <div class="col-6"></div>
+            <div class="col-7"></div>
             <div class="col-4">
                 <div class="details">
-                    <p>{{ tutor.phone }}</p>
-                    <p>{{ tutor.email }}</p>
-                    <p>£{{ tutor.price }} per hour</p>
+                    <h3 class="mb-4"><u>Details</u></h3>
+                    <span>Contact {{ tutor.name }}: </span><button class="btn btn-btn mb-2"><a href="">Direct message</a></button>
+                    <hr>
+                    <p><i class="fa-solid fa-phone"></i><a href="tel:{{ tutor.phone }}"> {{ tutor.phone }}</a></p>
+                    <p><i class="fa-regular fa-envelope"></i> <a href="mailto:{{ tutor.email }}">{{ tutor.email }}</a></p>
+                    <p><i class="fa-solid fa-money-bill-wave"></i> £{{ tutor.price }} per hour</p>
+                    <hr>
                 </div>
             </div>
-            <div class="col-2"></div>
+            <div class="col-1"></div>
         </div>
     </div>
 </section>
