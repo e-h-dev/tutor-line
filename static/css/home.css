@@ -115,3 +115,13 @@
     position: relative;
     z-index: 3;
 }
+
+@media (max-width:495px) {
+    #subjects{
+        font-size: 1.3rem;
+    }
+
+    .subject-box h5{
+        font-size: 0.6rem;
+    }
+}
