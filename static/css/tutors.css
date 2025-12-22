@@ -145,3 +145,21 @@ p{
     position: relative;
     left:100px;
 }
+
+@media (max-width:495px){
+
+    .search-bar .btn{
+        font-size: 1.3rem;
+        position: relative;
+        left:85%;
+        bottom:60px;
+    }
+
+    .tutor-card{
+        width:300px;
+    }
+
+    .tutor-card:hover{
+        width:298px;
+    }
+}

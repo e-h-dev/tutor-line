@@ -12,24 +12,24 @@
     <h1>Find your Tutor</h1>
     <div class="container-fluid mt-5">
         <div class="row">
-            <div class="col-2"></div>
-            <div class="col-5">
+            <div class="col-1 col-md-2"></div>
+            <div class="col-10 col-md-5">
                 <div class="search-bar">
                     <input type="text" class="search-input" placeholder="Search here">
                     <button class="btn"><i class="fas fa-search"></i></button>
                 </div>
             </div>
-            <div class="col-5"></div>
+            <div class="col-1 col-md-5"></div>
         </div>
     </div>
     <section class="mt-5">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-2"></div>
-                <div class="col-8">
+                <div class="col-1 col-md-2"></div>
+                <div class="col-10 col-md-8">
                     <div class="row">
                         {% for tutor in tutors %}
-                        <div class="col-4">
+                        <div class="col-12 col-md-6 col-lg-4">
                             <a href="{% url 'tutor_details' tutor.id %}">
                                 <div class="tutor-card shadow">
                                     <div class="image-opaque"></div>
@@ -67,7 +67,7 @@
                         {% endfor %}
                     </div>
                 </div>
-                <div class="col-2"></div>
+                <div class="col-1 col-md-2"></div>
             </div>
         </div>
     </section>
