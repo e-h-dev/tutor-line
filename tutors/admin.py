@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Tutors, Location, Category
+from . models import Tutors, Location, Category, Reviews
 
 # Register your models here.
 
@@ -35,6 +35,18 @@ class TutorAdmin(admin.ModelAdmin):
     )
 
 
+class ReviewsAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'tutor',
+        'rating',
+        'review',
+        'date',
+        'time',
+    )
+
+
 admin.site.register(Location, LocationAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Tutors, TutorAdmin)
+admin.site.register(Reviews, ReviewsAdmin)

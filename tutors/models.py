@@ -61,6 +61,10 @@ Model to store all tutor information
 
 
 class Tutors(models.Model):
+
+    class Meta:
+        verbose_name_plural = "Tutors"
+
     name = models.CharField(max_length=254)
     location = models.ForeignKey('Location', null=True, blank=True,
                                  on_delete=models.SET_NULL)
@@ -74,13 +78,32 @@ class Tutors(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=14)
     rating = models.IntegerField(default=0)
-    reviews = models.TextField(blank=True, null=True)
     image = models.ImageField(blank=True, null=True)
     is_male = models.BooleanField()
     color_1 = models.IntegerField(default=rand)
     color_2 = models.IntegerField(default=rand)
     color_3 = models.IntegerField(default=rand)
     
+    def __str__(self):
+        return self.name
+    
+
+class Reviews(models.Model):
+    """
+    Model to store all tutor reviews
+    """
+
+    class Meta:
+        verbose_name_plural = "Reveiws"
+   
+    name = models.CharField(max_length=254)
+    tutor = models.ForeignKey('Tutors', related_name='reviews',
+                                on_delete=models.CASCADE)
+    rating = models.IntegerField(default=0)
+    review = models.TextField(blank=True, null=True)
+    date = models.DateField(auto_now=True)
+    time = models.TimeField(auto_now=True)
 
     def __str__(self):
         return self.name
+

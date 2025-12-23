@@ -127,8 +127,18 @@
         <div class="row">
             
         <div class="col-4">
-            <p>{{ tutor.name }} has no Reviews Yet</p>
-            <p>Be the first to leave {% if tutor.is_male == True%} him{% else %}her{% endif %} a review.</p>
+            {% if reviews %}
+                {% for review in reviews %}
+                    {{ review.review }}
+                    {{ review.name }}
+                    {{ review.date }}
+                    {{ review.time }}
+                {% endfor%}
+            {% else %}
+                <p>{{ tutor.name }} has no Reviews Yet</p>
+                <p>Be the first to leave {% if tutor.is_male == True%} him{% else %}her{% endif %} a review.</p>
+            {% endif %}
+            
         </div>
          
 

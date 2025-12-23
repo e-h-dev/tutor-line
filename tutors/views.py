@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from . models import Location, Category, Tutors
+from . models import Location, Category, Tutors, Reviews
 
 
 # Create your views here.
@@ -20,8 +20,13 @@ def tutor_details(request, tutor_id):
 
     tutor = get_object_or_404(Tutors, pk=tutor_id)
 
+    reviews = Reviews.objects.filter(tutor=tutor)
+
     template = 'tutors/tutor-details.html'
 
-    context = {'tutor':tutor}
+    context = {
+        'tutor': tutor,
+        'reviews': reviews,
+        }
 
     return render(request, template, context)
