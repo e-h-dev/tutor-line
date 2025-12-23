@@ -7,6 +7,16 @@ h2, h3{
     text-align: center;
 }
 
+.main-image{
+    height:300px;
+    width:300px;
+    border-radius: 20%;
+    margin-bottom: 20px;
+    padding:10px;
+    background-color: var(--light-opaque);
+    border:2px solid var(--opaque)
+}
+
 
 .description, .details{
     background-color: var(--light-opaque);
@@ -63,4 +73,8 @@ h2, h3{
 .b-c-email{
     font-size: 0.7rem;
     overflow:hidden;
+}
+
+#download-card{
+    font-family: var(--main-font);
 }

@@ -10,21 +10,61 @@
 
 
 {% block content %}
-<h1>{{ tutor.name }}</h1>
-<h2>{{ tutor.subject }}</h2>
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-4">
+            <h5><a href="{% url 'tutors' %}"><i class="fa-solid fa-chevron-left"></i> Back to tutors</a></h5>
+        </div>
+        <div class="col-7"></div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h1>{{ tutor.name }}</h1>
+            <h2>{{ tutor.subject }}</h2>
+            <hr>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
 <section>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-1"></div>
-            <div class="col-4">
-                <h5><a href="{% url 'tutors' %}"><i class="fa-solid fa-chevron-left"></i> Back to tutors</a></h5>
+            <div class="col-2"></div>
+            <div class="col-3">
+                {% if tutor.image %}
+                    <img src="{{ tutor.image.url }}" class="main-image"  alt="{{ tutor.name }}">
+                {% else %}
+                    {% if tutor.is_male == True %}
+                        <img src="/media/placeholder_male2.png" class="main-image" alt="{{ tutor.name }}">
+                    {% else %}
+                        <img src="/media/placeholder_female.png" class="main-image"  alt="{{ tutor.name }}">
+                    {% endif %}
+                {% endif %}
             </div>
-            <div class="col-7"></div>
-        </div>
-        <div class="row">
             <div class="col-2"></div>
             <div class="col-4">
-                <div class="row image-box" 
+                <div class="description shadow">
+                    <h3 class="mb-4"><u>Description</u></h3>
+                    <p>{{ tutor.description }}</p>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <!-- empty row deviding sections -->
+        <div class="row mt-5">
+            <div class="col-12"></div>
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-4">
+                <h3 class="mt-3">{{ tutor.name }}'s Card</h3>
+                <hr>
+                <!-- buisness card section -->
+                <div class="row image-box mx-3" 
                     style="background-image: linear-gradient(to bottom left, rgb({{ tutor.color_1 }}, {{ tutor.color_2 }}, {{ tutor.color_3 }}), rgb({{ tutor.color_3 }}, {{ tutor.color_1 }}, {{ tutor.color_2 }}))">
                     <div class="col-6">
                         {% if tutor.image %}
@@ -48,21 +88,11 @@
                         <div class="b-c-email"><i class="fa-solid fa-phone"></i> {{ tutor.phone }}</div>
                     </div>
                 </div>
-                <button id="download-card" class="btn btn-btn mt-3">
+                <button id="download-card" class="btn btn-btn mt-3 mx-3">
                     <i class="fa-solid fa-download"></i> Download Card
                 </button>
             </div>
-            <div class="col-1"></div>
-            <div class="col-4">
-                <div class="description shadow">
-                    <h3 class="mb-4"><u>Description</u></h3>
-                    <p>{{ tutor.description }}</p>
-                </div>
-            </div>
-            <div class="col-1"></div>
-        </div>
-        <div class="row">
-            <div class="col-7"></div>
+            <div class="col-2"></div>
             <div class="col-4">
                 <div class="details shadow">
                     <h3 class="mb-4"><u>Details</u></h3>
@@ -71,10 +101,37 @@
                     <p><i class="fa-solid fa-phone"></i><a href="tel:{{ tutor.phone }}"> {{ tutor.phone }}</a></p>
                     <p><i class="fa-regular fa-envelope"></i> <a href="mailto:{{ tutor.email }}">{{ tutor.email }}</a></p>
                     <p><i class="fa-solid fa-money-bill-wave"></i> £{{ tutor.price }} per hour</p>
+                    <p>
+                        <i class="fa-solid fa-star stars"></i> Rating : {% if tutor.rating == 0 %} <span class="no-rating">There are no ratings yet!</span>{% else %}{{ tutor.rating }}{% endif %} 
+                    </p>
                     <hr>
                 </div>
             </div>
             <div class="col-1"></div>
+        </div>
+    </div>
+</section>
+<!-- Reviews section -->
+<section>
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div class="col-12"></div>
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-2">
+                <h1>Reviews</h1>
+            </div>
+            <div class="col-9"></div>
+        </div>
+        <div class="row">
+            
+        <div class="col-4">
+            <p>{{ tutor.name }} has no Reviews Yet</p>
+            <p>Be the first to leave {% if tutor.is_male == True%} him{% else %}her{% endif %} a review.</p>
+        </div>
+         
+
         </div>
     </div>
 </section>
