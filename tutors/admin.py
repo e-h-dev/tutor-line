@@ -29,7 +29,6 @@ class TutorAdmin(admin.ModelAdmin):
         'email',
         'phone',
         'rating',
-        'reviews',
         'image',
         'is_male'
     )
