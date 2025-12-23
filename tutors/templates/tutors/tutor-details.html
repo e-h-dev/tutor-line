@@ -24,7 +24,8 @@
         <div class="row">
             <div class="col-2"></div>
             <div class="col-4">
-                <div class="row image-box">
+                <div class="row image-box" 
+                    style="background-image: linear-gradient(to bottom left, rgb({{ tutor.color_1 }}, {{ tutor.color_2 }}, {{ tutor.color_3 }}), rgb({{ tutor.color_3 }}, {{ tutor.color_1 }}, {{ tutor.color_2 }}))">
                     <div class="col-6">
                         {% if tutor.image %}
                         <img src="{{ tutor.image.url }}" class="tutor-image"  alt="{{ tutor.name }}">
@@ -46,6 +47,7 @@
             <div class="col-1"></div>
             <div class="col-4">
                 <div class="description shadow">
+                    <h3 class="mb-4"><u>Description</u></h3>
                     <p>{{ tutor.description }}</p>
                 </div>
             </div>
@@ -54,7 +56,7 @@
         <div class="row">
             <div class="col-7"></div>
             <div class="col-4">
-                <div class="details">
+                <div class="details shadow">
                     <h3 class="mb-4"><u>Details</u></h3>
                     <span>Contact {{ tutor.name }}: </span><button class="btn btn-btn mb-2"><a href="">Direct message</a></button>
                     <hr>

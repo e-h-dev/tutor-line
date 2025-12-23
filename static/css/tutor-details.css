@@ -20,7 +20,7 @@ h2, h3{
 .image-box{
     padding:20px;
     width:100%;
-    background-image: linear-gradient(to bottom left, var(--drk-clr), var(--ylw-clr));
+    /* background-image: linear-gradient(to bottom left, var(--drk-clr), var(--ylw-clr)); */
     border: solid 2px var(--light-clr);
     border-radius: 15px;
     font-family: var(--main-font);

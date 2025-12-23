@@ -1,4 +1,27 @@
+import random
 from django.db import models
+
+
+"""
+function to create random number between 1 and 50
+to connect to tutor model color_number, for buisness
+card unique color for each tutor registeres.
+"""
+
+
+def rand():
+    return random.randint(1, 255)
+
+# def rand():
+#     return random.choice(['1', '2', '3', '4', '5,', '6'])
+
+
+# def rand_let():
+#     return random.choice(['a', 'b', 'c', 'd', 'e,', 'f'])
+
+# def random_color():
+#     return rand() + rand_let()
+
 
 # Create your models here.
 
@@ -54,6 +77,10 @@ class Tutors(models.Model):
     reviews = models.TextField(blank=True, null=True)
     image = models.ImageField(blank=True, null=True)
     is_male = models.BooleanField()
+    color_1 = models.IntegerField(default=rand)
+    color_2 = models.IntegerField(default=rand)
+    color_3 = models.IntegerField(default=rand)
+    
 
     def __str__(self):
         return self.name
