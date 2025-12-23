@@ -79,3 +79,12 @@ h2, h3{
 #download-card{
     font-family: var(--main-font);
 }
+
+.review-box{
+    background-color: var(--light-opaque);
+    border: solid 2px var(--opaque);
+    border-radius: 15px;
+    padding:20px;
+    color:var(--drk-clr);
+    font-family: var(--main-font);
+}
