@@ -37,12 +37,20 @@
                             {% endif %}
                         {% endif %}
                     </div>
-                    <div class="col-6 mt-5 pt-5">
-                        <h4>{{ tutor.name }}</h4>
-                        <h5>{{ tutor.subject }}</h5>
-                        <p class="b-c-email">{{ tutor.email }}</p>
+                    <div class="col-6 mt-1">
+                        <h4 class="card-logo">
+                            <img src="/media/logo.png" alt="logo" class="card-logo-image">
+                            <span class="logo-text"><strong>TutorLine</strong></span>
+                        </h4>
+                        <h4 class="mt-4">{{ tutor.name }}</h4>
+                        <h5 class="card-logo logo-text">Subject: <strong><em>{{ tutor.subject }}</em></strong></h5>
+                        <div class="b-c-email"><i class="fa-regular fa-envelope"></i> {{ tutor.email }}</div>
+                        <div class="b-c-email"><i class="fa-solid fa-phone"></i> {{ tutor.phone }}</div>
                     </div>
                 </div>
+                <button id="download-card" class="btn btn-btn mt-3">
+                    <i class="fa-solid fa-download"></i> Download Card
+                </button>
             </div>
             <div class="col-1"></div>
             <div class="col-4">
@@ -72,5 +80,23 @@
 </section>
 {% endblock %}
 {% block postloadjs %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+document.getElementById("download-card").addEventListener("click", function() {
+    const card = document.querySelector(".image-box");
+
+    html2canvas(card, {
+        scale: 2,
+        useCORS: true
+    }).then(canvas => {
+        const link = document.createElement("a");
+        link.download = "{{ tutor.name }}_card.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+    });
+});
+</script>
+
 
 {% endblock %}

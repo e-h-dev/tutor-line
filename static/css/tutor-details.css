@@ -37,6 +37,29 @@ h2, h3{
     
 }
 
+.card-logo{
+    height:30px;
+    background-color: var(--light-opaque);
+    padding:10px;
+    border-radius: 9999px;
+    border:solid var(--light-clr) 1px;
+}
+
+.card-logo-image{
+    height:30px;
+    width:30px;
+    position: relative;
+    bottom:12px;
+}
+
+.logo-text{
+    color:var(--drk-clr);
+    font-size: 0.8rem;
+    position: relative;
+    bottom:7px;
+    right:9px
+}
+
 .b-c-email{
     font-size: 0.7rem;
     overflow:hidden;
