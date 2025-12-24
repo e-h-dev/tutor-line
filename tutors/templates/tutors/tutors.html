@@ -22,15 +22,27 @@
                     </div>
                  </form>
             </div>
-            <div class="col-1 col-md-5"></div>
+            <div class="col-1 col-md-5">
+                 <form action="{% url 'tutors' %}" method="GET">
+                     <select name="sort" class="select-box" onchange="this.form.submit()">
+                        <option value="">Sort by...</option>
+                        <option value="price_low" {% if request.GET.sort == "price_low" %}selected{% endif %}>Price (low to high)</option>
+                        <option value="price_high" {% if request.GET.sort == "price_high" %}selected{% endif %}>Price (high to low)</option>
+                        <option value="most_recent" {% if request.GET.sort == "most_recent" %}selected{% endif %}>Most Recent</option>
+                        <option value="highest_rating" {% if request.GET.sort == "highest_rating" %}selected{% endif %}>Highest Rated</option>
+                        <!-- <option value="category_asc" {% if request.GET.sort == "cat_a_z" %}selected{% endif %}>Category (A-Z)</option>
+                        <option value="category_desc" {% if request.GET.sort == "cat_z_a" %}selected{% endif %}>Category (Z-A)</option> -->
+                    </select>
+                 </form>
+            </div>
         </div>
     </div>
     <section class="mt-5">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row search-results">
                 <div class="col-1 col-md-2"></div>
                 <div class="col-11 col-md-4">
-                    <h5>We have found ({{ tutors.count }}) tutor{% if tutors.count == 1 %}{% else %}s{% endif %}{% if search %}, for "{{ search }}".{% else %}.
+                    <h5>We have found ({{ tutors.count }}) tutor{% if tutors.count == 1 %}{% else %}s{% endif %}{% if search %}, for <strong>"{{ search }}"</strong>.{% else %}.
                         {% endif %}
                     </h5>
                 </div>

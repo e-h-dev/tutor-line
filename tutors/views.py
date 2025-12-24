@@ -12,6 +12,8 @@ def tutors(request):
     tutors = Tutors.objects.all()
     query = None
 
+    sort = request.GET.get('sort')
+
     if request.GET:
         if 'q' in request.GET:
             query = request.GET['q']
@@ -19,6 +21,18 @@ def tutors(request):
             queries = Q(name__icontains=query) | Q(subject__icontains=query) | Q(category__name__icontains=query) | Q(location__name__icontains=query)
 
             tutors = tutors.filter(queries)
+
+    if sort == "price_low":
+        tutors = tutors.order_by('price')
+    elif sort == "price_high":
+        tutors = tutors.order_by('-price')
+    elif sort == "most_recent":
+        tutors = tutors.order_by('-date_added')
+    elif sort == "highest_rating":
+        tutors = tutors.order_by('-rating')
+
+    print(list(tutors.values_list("name", "rating")))
+
 
     context = {
                 'tutors': tutors,
