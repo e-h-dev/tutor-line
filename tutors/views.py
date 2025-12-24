@@ -10,6 +10,7 @@ def tutors(request):
     """
 
     tutors = Tutors.objects.all()
+    query = None
 
     if request.GET:
         if 'q' in request.GET:
@@ -19,7 +20,10 @@ def tutors(request):
 
             tutors = tutors.filter(queries)
 
-    context = {'tutors': tutors}
+    context = {
+                'tutors': tutors,
+                'search': query,
+                }
     return render(request, 'tutors/tutors.html', context)
 
 
