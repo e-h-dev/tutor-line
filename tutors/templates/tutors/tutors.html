@@ -28,13 +28,13 @@
     <section class="mt-5">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-2"></div>
-                <div class="col-4">
+                <div class="col-1 col-md-2"></div>
+                <div class="col-11 col-md-4">
                     <h5>We have found ({{ tutors.count }}) tutor{% if tutors.count == 1 %}{% else %}s{% endif %}{% if search %}, for "{{ search }}".{% else %}.
                         {% endif %}
                     </h5>
                 </div>
-                <div class="col-6"></div>
+                <div class="d-none d-md-block col-md-6"></div>
             </div>
             <div class="row mt-3">
                 <div class="col-1 col-md-2"></div>
