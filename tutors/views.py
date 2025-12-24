@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Q
 from . models import Location, Category, Tutors, Reviews
 
 
@@ -9,6 +10,15 @@ def tutors(request):
     """
 
     tutors = Tutors.objects.all()
+
+    if request.GET:
+        if 'q' in request.GET:
+            query = request.GET['q']
+
+            queries = Q(name__icontains=query) | Q(subject__icontains=query) | Q(category__name__icontains=query) | Q(location__name__icontains=query)
+
+            tutors = tutors.filter(queries)
+
     context = {'tutors': tutors}
     return render(request, 'tutors/tutors.html', context)
 

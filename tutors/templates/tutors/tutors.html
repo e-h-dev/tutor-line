@@ -14,10 +14,13 @@
         <div class="row">
             <div class="col-1 col-md-2"></div>
             <div class="col-10 col-md-5">
-                <div class="search-bar">
-                    <input type="text" class="search-input" placeholder="Search here">
-                    <button class="btn"><i class="fas fa-search"></i></button>
-                </div>
+                <!-- search bar form -->
+                 <form action="{% url 'tutors' %}" method="GET">
+                    <div class="search-bar">
+                        <input type="text" class="search-input" name="q" placeholder="Search here">
+                        <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                    </div>
+                 </form>
             </div>
             <div class="col-1 col-md-5"></div>
         </div>
@@ -25,6 +28,13 @@
     <section class="mt-5">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-2"></div>
+                <div class="col-3">
+                    <h4>We have found ({{ tutors.count }}) tutor{% if tutors.count == 1 %}{% else %}s{% endif %}.</h4>
+                </div>
+                <div class="col-7"></div>
+            </div>
+            <div class="row mt-3">
                 <div class="col-1 col-md-2"></div>
                 <div class="col-10 col-md-8">
                     <div class="row">
