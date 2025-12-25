@@ -1,5 +1,5 @@
 from django import forms
-from .models import Location, Category, Tutors
+from .models import Location, Category, Tutors, Reviews
 
 
 class TutorForm(forms.ModelForm):
@@ -16,6 +16,16 @@ class TutorForm(forms.ModelForm):
         }
 
     image = forms.ImageField(label='Image', required=False)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+
+class ReviewForm(forms.ModelForm):
+
+    class Meta:
+        model = Reviews
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
