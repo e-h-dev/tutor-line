@@ -23,17 +23,17 @@
                  </form>
             </div>
             <div class="col-1 col-md-5">
-                 <form action="{% url 'tutors' %}" method="GET">
-                     <select name="sort" class="select-box" onchange="this.form.submit()">
-                        <option value="">Sort by...</option>
-                        <option value="price_low" {% if request.GET.sort == "price_low" %}selected{% endif %}>Price (low to high)</option>
-                        <option value="price_high" {% if request.GET.sort == "price_high" %}selected{% endif %}>Price (high to low)</option>
-                        <option value="most_recent" {% if request.GET.sort == "most_recent" %}selected{% endif %}>Most Recent</option>
-                        <option value="highest_rating" {% if request.GET.sort == "highest_rating" %}selected{% endif %}>Highest Rated</option>
-                        <!-- <option value="category_asc" {% if request.GET.sort == "cat_a_z" %}selected{% endif %}>Category (A-Z)</option>
-                        <option value="category_desc" {% if request.GET.sort == "cat_z_a" %}selected{% endif %}>Category (Z-A)</option> -->
-                    </select>
-                 </form>
+                <form action="{% url 'tutors' %}" method="GET">
+                    <div class="select-box">
+                        <select name="sort" onchange="this.form.submit()">
+                            <option value="">Sort by...</option>
+                            <option value="price_low" {% if request.GET.sort == "price_low" %}selected{% endif %}>Price (low to high)</option>
+                            <option value="price_high" {% if request.GET.sort == "price_high" %}selected{% endif %}>Price (high to low)</option>
+                            <option value="most_recent" {% if request.GET.sort == "most_recent" %}selected{% endif %}>Most Recent</option>
+                            <option value="highest_rating" {% if request.GET.sort == "highest_rating" %}selected{% endif %}>Highest Rated</option>
+                        </select>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
