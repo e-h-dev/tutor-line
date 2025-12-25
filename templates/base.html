@@ -69,7 +69,7 @@
               <span class="nav-options">
                 <li class="nav-select"><a href="{% url 'tutors' %}">Find a Tutor</a></li>
                 <li class="nav-select"><a href="#subjects">Subjects</a></li>
-                <li class="nav-select"><a href="">Create Tutor Profile</a></li>
+                <li class="nav-select"><a href="{% url 'create_tutor' %}">Create Tutor Profile</a></li>
                 <li class="sign-in nav-select">
                   {% if request.user.is_authenticated %}
                   <p><strong>Hi!</strong> {{ user.username }}</p>
@@ -113,7 +113,7 @@
             <ul class="footer-list">
               <li><a href="{% url 'tutors' %}">Find a Tutor</a></li>
               <li><a href="#subjects">Subjects</a></li>
-              <li><a href="">Create Tutor Profile</a></li>
+              <li><a href="{% url 'create_tutor' %}">Create Tutor Profile</a></li>
               <li><a href="">About</a></li>
               <li><a href="">Contact</a></li>
               {% if request.user.is_authenticated %}

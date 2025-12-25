@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extracss%}
+<link rel="stylesheet" href="{% static 'css/tutors.css' %}">
+<link rel="stylesheet" href="{% static 'css/tutor-details.css' %}">
+{% endblock %}
+
+{% block extra_title %} - Create Profile {% endblock %}
+
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h1>Create a Tutor Profile</h1>
+            <hr>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <form action="{% url 'create_tutor' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit">Create Profile</button>
+                </form>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+{% block postloadjs %}
+
+</script>
+
+
+{% endblock %}

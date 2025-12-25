@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from . models import Location, Category, Tutors, Reviews
+from .forms import TutorForm
 
 
 # Create your views here.
@@ -58,3 +59,28 @@ def tutor_details(request, tutor_id):
         }
 
     return render(request, template, context)
+
+
+def create_tutor(request):
+
+    if request.method == 'POST':
+        form = TutorForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('tutors')
+    else:
+        form = TutorForm()
+ 
+    return render(request, 'tutors/create-tutor.html', {'form': form})
+
+# def create_tutor(request):
+
+#     if request.method == 'POST':
+#         form = TutorForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('tutors')
+#     else:
+#         form = TutorForm()
+
+#     return render(request, 'tutors/create-tutor.html', {'form': form})
