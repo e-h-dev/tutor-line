@@ -22,6 +22,9 @@ def tutors(request):
 
             tutors = tutors.filter(queries)
 
+    rating_none = tutors.filter(rating=0)
+    print(rating_none)
+
     if sort == "price_low":
         tutors = tutors.order_by('price')
     elif sort == "price_high":
@@ -29,10 +32,7 @@ def tutors(request):
     elif sort == "most_recent":
         tutors = tutors.order_by('-date_added')
     elif sort == "highest_rating":
-        tutors = tutors.order_by('-rating')
-
-    print(list(tutors.values_list("name", "rating")))
-
+        tutors = tutors.filter(rating__gt=0).order_by('-rating')
 
     context = {
                 'tutors': tutors,
