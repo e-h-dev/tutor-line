@@ -1,0 +1,42 @@
+.form-container{
+    background-color: var(--light-opaque);
+    padding: 30px;
+    border-radius: 20px;
+    border:2px solid var(--opaque)
+}
+
+.form-container p{
+    font-family: var(--main-font);
+    color:var(--drk-clr)
+}
+
+input{
+    border: 0.5px solid var(--opaque);
+    border-radius: 5px;
+    height:30px;
+    width:400px;
+    background-color: var(--light-clr);
+}
+
+textarea{
+    background-color: var(--light-clr);
+    border: 0.5px solid var(--opaque);
+    border-radius: 5px;
+    width:400px;
+}
+
+input[type="checkbox"]{
+    height:15px;
+    width:15px;
+}
+
+input[name="color_1"],
+input[name="color_2"],
+input[name="color_3"],
+input[name="rating"],
+label[for="id_color_1"],
+label[for="id_color_2"],
+label[for="id_color_3"],
+label[for="id_rating"]{
+    display:none;
+}
