@@ -40,3 +40,25 @@ label[for="id_color_3"],
 label[for="id_rating"]{
     display:none;
 }
+
+#id_image{
+    display:none
+}
+
+label[for="id_image"]{
+    display:none
+}
+
+#image, label[for="image"]{
+    display:none
+}
+
+#id_is_male,
+label[for="id_is_male"]{
+    display:none
+}
+
+/* option[value="True"]:focus #id_image{
+    display:block
+} */
+

@@ -81,7 +81,6 @@ def review_tutor(request, tutor_id):
     total = Reviews.objects.filter(tutor=tutor).aggregate(total=Sum('rating'))['total']
     print('the total number of ratings for this tutor is', total)
 
-
     if request.method == 'POST':
         form = ReviewForm(request.POST, tutor_id)
         form2 = RatingForm(request.POST, instance=tutor)

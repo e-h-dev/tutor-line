@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-4"></div>
         <div class="col-4">
-            <h1>Create a Tutor Profile</h1>
+            <h1 id="hello-world" onclick="imageForMale()">Create a Tutor Profile</h1>
             <hr>
         </div>
         <div class="col-4"></div>
@@ -23,12 +23,32 @@
 <section>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-3"></div>
+            <div class="col-3">
+                <h1 id="click-here" class="mt-5">click here</h1>
+            </div>
             <div class="col-6">
                 <div class="form-container">
                     <form action="{% url 'create_tutor' %}" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.as_div }}
+                        <div>
+    
+                            <label for="id_male">What is Your Gender?:</label>
+                            
+                            <select name="male" id="id_male">
+                                <option value="" selected="">Gender...</option>
+
+                                <option value="True">Male</option>
+
+                                <option value="False">Female</option>
+
+                            </select>
+                            
+                        </div>
+                        <div>
+                            <label for="image">Image:</label> 
+                            <input type="file" name="image" accept="image/*" id="image">
+                        </div>
                         <button class="btn btn-btn" type="submit">Create Profile</button>
                     </form>
                 </div>
@@ -40,6 +60,54 @@
 
 {% endblock %}
 {% block postloadjs %}
+
+<script>
+    console.log("JS loaded")
+    const myClick = document.getElementById('click-here')
+    const genderSelect = document.getElementById("id_male")
+    const imageInput = document.getElementById("image")
+    const imageLabel = document.querySelector('label[for="image"]')
+
+    genderSelect.addEventListener("change", showImage)
+
+    function showImage(){
+        console.log("Changed value:", genderSelect.value)
+        if (genderSelect.value === "True") {
+            if (imageInput) imageInput.style.display = "block"
+            if (imageLabel) imageLabel.style.display = "block"
+        } else {
+            if (imageInput) imageInput.style.display = "none"
+            if (imageLabel) imageLabel.style.display = "none"
+        }
+    }
+//   document.addEventListener("DOMContentLoaded", () => {
+//     const genderSelect = document.getElementById("id_is_male")
+//     const imageInput = document.getElementById("id_image")
+//     const imageLabel = document.querySelector('label[for="id_image"]')
+
+//     console.log("genderSelect:", genderSelect)
+//     console.log("imageInput:", imageInput)
+//     console.log("imageLabel:", imageLabel)
+
+//     if (!genderSelect) return
+
+//     genderSelect.addEventListener("change", () => {
+//         console.log("Changed value:", genderSelect.value)
+
+//         if (genderSelect.value === "True") {
+//             if (imageInput) imageInput.style.display = "block"
+//             if (imageLabel) imageLabel.style.display = "block"
+//         } else {
+//             if (imageInput) imageInput.style.display = "none"
+//             if (imageLabel) imageLabel.style.display = "none"
+//         }
+//     })
+// })
+
+// document.getElementById("id_is_male").addEventListener("change", (e) => {
+//     console.log("Actual value:", e.target.value)
+// })
+
 
 </script>
 
