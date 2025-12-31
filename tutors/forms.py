@@ -29,3 +29,13 @@ class ReviewForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+
+class RatingForm(forms.ModelForm):
+
+    class Meta:
+        model = Tutors
+        fields = ('rating',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)

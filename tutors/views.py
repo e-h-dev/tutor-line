@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
+from django.db.models import Sum
 from . models import Location, Category, Tutors, Reviews
-from .forms import TutorForm, ReviewForm
+from .forms import TutorForm, ReviewForm, RatingForm
 
 
 # Create your views here.
@@ -70,24 +71,32 @@ def create_tutor(request):
             return redirect('tutors')
     else:
         form = TutorForm()
- 
+
     return render(request, 'tutors/create-tutor.html', {'form': form})
 
 
 def review_tutor(request, tutor_id):
 
     tutor = get_object_or_404(Tutors, pk=tutor_id)
+    total = Reviews.objects.filter(tutor=tutor).aggregate(total=Sum('rating'))['total']
+    print('the total number of ratings for this tutor is', total)
+
 
     if request.method == 'POST':
         form = ReviewForm(request.POST, tutor_id)
-        if form.is_valid():
+        form2 = RatingForm(request.POST, instance=tutor)
+        if form.is_valid() and form2.is_valid():
             form.save()
+            form2.save()
             return redirect('tutors')
     else:
         form = ReviewForm()
-   
+        form2 = RatingForm()
+  
     context = {'form': form,
                'tutor': tutor,
+               'form2': form2,
+               'total': total
                }
 
     return render(request, 'tutors/review-tutor.html', context)
