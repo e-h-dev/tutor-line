@@ -30,35 +30,7 @@ input[type="checkbox"]{
     width:15px;
 }
 
-input[name="color_1"],
-input[name="color_2"],
-input[name="color_3"],
-input[name="rating"],
-label[for="id_color_1"],
-label[for="id_color_2"],
-label[for="id_color_3"],
-label[for="id_rating"]{
-    display:none;
-}
-
-#id_image{
-    display:none
-}
-
+/* #id_image,
 label[for="id_image"]{
     display:none
-}
-
-#image, label[for="image"]{
-    display:none
-}
-
-#id_is_male,
-label[for="id_is_male"]{
-    display:none
-}
-
-/* option[value="True"]:focus #id_image{
-    display:block
 } */
-

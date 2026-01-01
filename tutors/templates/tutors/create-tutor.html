@@ -31,26 +31,205 @@
                     <form action="{% url 'create_tutor' %}" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.as_div }}
-                        <div>
-    
-                            <label for="id_male">What is Your Gender?:</label>
-                            
-                            <select name="male" id="id_male">
+                        <!-- <div>
+                            <label for="id_is_male">Male:</label>
+                            <input type="checkbox" name="is_male" id="id_is_male" checked="">   
+                        </div> -->
+                        <!-- <div>
+                            <label name="is_male" for="id_is_male">Is male:</label> 
+                            <select name="is_male" id="id_is_male">
                                 <option value="" selected="">Gender...</option>
-
                                 <option value="True">Male</option>
-
                                 <option value="False">Female</option>
-
-                            </select>
-                            
-                        </div>
+                             </select>  
+                        </div> -->
                         <div>
-                            <label for="image">Image:</label> 
-                            <input type="file" name="image" accept="image/*" id="image">
+                            <label name="image" for="id_image">Image:</label> 
+                            <input type="file" name="image" accept="image/*" id="id_image">  
                         </div>
                         <button class="btn btn-btn" type="submit">Create Profile</button>
                     </form>
+                    <!-- <form action="/tutors/create_tutor/" method="POST" enctype="multipart/form-data">
+                        <div>
+                            <label for="id_name">Name:</label>
+                            <input type="text" name="name" maxlength="254" required="" id="id_name">
+                        </div>
+                        <div>
+                            <label for="id_location">Location:</label>
+                            <select name="location" id="id_location">
+                                <option value="" selected="">---------</option>
+                                <option value="1">Manchester</option>
+                            </select>
+                            
+                            
+                        </div>
+
+                        <div>
+                            
+                            <label for="id_category">Category:</label>
+                            
+                            
+                            
+                            <select name="category" id="id_category">
+                        <option value="" selected="">---------</option>
+
+                        <option value="1">Kodesh</option>
+
+                        <option value="2">Chol</option>
+
+                        <option value="3">Sub</option>
+
+                        <option value="4">Groups</option>
+
+                        <option value="5">Activities</option>
+
+                        </select>
+                            
+                            
+                        </div>
+
+                        <div>
+                            
+                            <label for="id_subject">Subject:</label>
+                            
+                            
+                            
+                            <input type="text" name="subject" maxlength="254" required="" id="id_subject">
+                            
+                            
+                        </div>
+
+                        <div>
+                            
+                            <label for="id_price">Price:</label>
+                            
+                            
+                            
+                            <input type="number" name="price" required="" id="id_price">
+                            
+                            
+                        </div>
+
+                        <div>
+                            
+                            <label for="id_active">Active:</label>
+                            
+                            
+                            
+                            <input type="checkbox" name="active" id="id_active" checked="">
+                            
+                            
+                        </div>
+
+                        <div>
+                            
+                            <label for="id_description">Description:</label>
+                            
+                            
+                            
+                            <textarea name="description" cols="40" rows="10" required="" id="id_description"></textarea>
+                            
+                            
+                        </div>
+
+                        <div>
+                            
+                            <label for="id_email">Email:</label>
+                            
+                            
+                            
+                            <input type="email" name="email" maxlength="254" required="" id="id_email">
+                            
+                            
+                        </div>
+
+                        <div>
+                            
+                            <label for="id_phone">Phone:</label>
+                            
+                            
+                            
+                            <input type="text" name="phone" maxlength="14" required="" id="id_phone">
+                            
+                            
+                        </div>
+
+                        <div>
+                            
+                            <label for="id_rating">Rating:</label>
+                            
+                            
+                            
+                            <input type="number" name="rating" value="0" required="" id="id_rating">
+                            
+                            
+                        </div>
+
+                        <div>
+                            
+                            <label for="id_image">Image:</label>
+                            
+                            
+                            
+                            <input type="file" name="image" accept="image/*" id="id_image">
+                            
+                            
+                        </div>
+
+                        <div>
+                            
+                            <label for="id_is_male">Is male:</label>
+                            
+                            
+                            
+                            <select name="is_male" id="id_is_male">
+                        <option value="" selected="">Gender...</option>
+
+                        <option value="True">Male</option>
+
+                        <option value="False">Female</option>
+
+                        </select>
+                            
+                            
+                        </div>
+
+                        <div>
+                            
+                            <label for="id_color_1">Color 1:</label>
+                            
+                            
+                            
+                            <input type="number" name="color_1" value="108" required="" id="id_color_1"><input type="hidden" name="initial-color_1" value="108" id="initial-id_color_1">
+                            
+                            
+                        </div>
+
+                        <div>
+                            
+                            <label for="id_color_2">Color 2:</label>
+                            
+                            
+                            
+                            <input type="number" name="color_2" value="226" required="" id="id_color_2"><input type="hidden" name="initial-color_2" value="226" id="initial-id_color_2">
+                            
+                            
+                        </div>
+
+                        <div>
+                            
+                            <label for="id_color_3">Color 3:</label>
+                            
+                            
+                            
+                            <input type="number" name="color_3" value="164" required="" id="id_color_3"><input type="hidden" name="initial-color_3" value="164" id="initial-id_color_3">
+                            
+                            
+                            
+                            
+                        </div>
+                                                <button class="btn btn-btn" type="submit">Create Profile</button>
+                    </form> -->
                 </div>
             </div>
             <div class="col-3"></div>
@@ -64,7 +243,7 @@
 <script>
     console.log("JS loaded")
     const myClick = document.getElementById('click-here')
-    const genderSelect = document.getElementById("id_male")
+    const genderSelect = document.getElementById("id_is_male")
     const imageInput = document.getElementById("image")
     const imageLabel = document.querySelector('label[for="image"]')
 

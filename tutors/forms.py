@@ -6,7 +6,7 @@ class TutorForm(forms.ModelForm):
 
     class Meta:
         model = Tutors
-        fields = '__all__'
+        fields = ['name', 'location', 'category', 'subject', 'price', 'phone', 'email', 'description', 'is_male']
         widgets = {
             'is_male': forms.Select(choices=[
                 (None, 'Gender...'),
@@ -15,7 +15,16 @@ class TutorForm(forms.ModelForm):
             ])
         }
 
-    image = forms.ImageField(label='Image', required=False)
+    # image = forms.ImageField(label='Image', required=False)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+
+class TutorImageForm(forms.ModelForm):
+    class Meta:
+        model = Tutors
+        fields = ['image',]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

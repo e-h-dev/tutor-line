@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from django.db.models import Sum
 from . models import Location, Category, Tutors, Reviews
-from .forms import TutorForm, ReviewForm, RatingForm
+from .forms import TutorForm, ReviewForm, RatingForm, TutorImageForm
 
 
 # Create your views here.
@@ -62,13 +62,37 @@ def tutor_details(request, tutor_id):
     return render(request, template, context)
 
 
+def image_load(request, tutor_id):
+    tutor = get_object_or_404(Tutors, pk=tutor_id)
+
+    if request.method == 'POST':
+        image_form = TutorImageForm(request.POST, request.FILES, instance=tutor)
+        if image_form.is_valid():
+            image_form.save()
+            return redirect('tutors')
+    else:
+        image_form = TutorImageForm()
+
+    context = {
+        'tutor': tutor,
+        'image_form': image_form
+    }
+    
+    return render(request, 'tutors/image-load.html', context)
+
+
 def create_tutor(request):
+
+    # tutor = Tutors.objects.all()
 
     if request.method == 'POST':
         form = TutorForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('tutors')
+            tutor = form.save()
+            if tutor.is_male:
+                return redirect('image_load', tutor_id=tutor.id)
+            else:
+                return redirect('tutors')
     else:
         form = TutorForm()
 
