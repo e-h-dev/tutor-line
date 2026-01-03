@@ -67,8 +67,8 @@
                 <img src="/media/logo.png" alt="logo" class="logo"><span class="logo-txt">TutorLine</span>
               </a></li>
               <span class="nav-options">
+                <li class="nav-select"><a href="{% url 'about' %}">About</a></li>
                 <li class="nav-select"><a href="{% url 'tutors' %}">Find a Tutor</a></li>
-                <li class="nav-select"><a href="#subjects">Subjects</a></li>
                 <li class="nav-select"><a href="{% url 'create_tutor' %}">Create Tutor Profile</a></li>
                 <li class="sign-in nav-select">
                   {% if request.user.is_authenticated %}
