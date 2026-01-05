@@ -111,10 +111,9 @@
               <strong>Quick Links</strong>
             </h4>
             <ul class="footer-list">
+              <li><a href="{% url 'about' %}">About</a></li>
               <li><a href="{% url 'tutors' %}">Find a Tutor</a></li>
-              <li><a href="#subjects">Subjects</a></li>
               <li><a href="{% url 'create_tutor' %}">Create Tutor Profile</a></li>
-              <li><a href="">About</a></li>
               <li><a href="">Contact</a></li>
               {% if request.user.is_authenticated %}
               <li><a href="#nav" role="button" onclick="revealLogout()">Logout</a></li>
