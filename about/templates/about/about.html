@@ -2,49 +2,58 @@
 {% load static %}
 
 {% block extracss%}
-
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
 {% endblock %}
 
 {% block extra_title %} - About {% endblock %}
 
 
 {% block content %}
-<h1>About Tutor Line</h1>
+<div class="container-fluid">
+    <div class="row mt-5"></div>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6 shadow">
+            <h1>About Tutor Line</h1>
 
-    <p>
-        Tutor Line was created to make it easier for families and students to find the right tutor with confidence. 
-        The platform brings clarity, organisation, and transparency to the tutoring process, helping users connect 
-        with educators who match their needs, values, and learning goals.
-    </p>
+            <p>
+                Tutor Line was created to make it easier for families and students to find the right tutor with confidence. 
+                The platform brings clarity, organisation, and transparency to the tutoring process, helping users connect 
+                with educators who match their needs, values, and learning goals.
+            </p>
 
-    <p>
-        The mission of Tutor Line is to empower both learners and tutors by providing a simple, reliable space where 
-        accurate information, thoughtful presentation, and professional communication come together. Every profile is 
-        designed to highlight a tutor’s strengths clearly, making it easier for users to make informed decisions.
-    </p>
+            <p>
+                The mission of Tutor Line is to empower both learners and tutors by providing a simple, reliable space where 
+                accurate information, thoughtful presentation, and professional communication come together. Every profile is 
+                designed to highlight a tutor’s strengths clearly, making it easier for users to make informed decisions.
+            </p>
 
-    <p>
-        Tutor Line also aims to support tutors by giving them tools to present themselves professionally, showcase 
-        their experience, and build trust with potential clients. The platform reflects a commitment to clarity, 
-        fairness, and meaningful educational connections.
-    </p>
+            <p>
+                Tutor Line also aims to support tutors by giving them tools to present themselves professionally, showcase 
+                their experience, and build trust with potential clients. The platform reflects a commitment to clarity, 
+                fairness, and meaningful educational connections.
+            </p>
 
-    <h2>How to Use Tutor Line</h2>
+            <h2>How to Use Tutor Line</h2>
 
-    <p>
-        Browse through the list of tutors using the search and sort options to narrow down subjects, ratings, or 
-        other criteria that matter to you. Each tutor profile includes key information such as experience, subjects 
-        taught, and availability.
-    </p>
+            <p>
+                Browse through the list of tutors using the search and sort options to narrow down subjects, ratings, or 
+                other criteria that matter to you. Each tutor profile includes key information such as experience, subjects 
+                taught, and availability.
+            </p>
 
-    <p>
-        When you find a tutor who feels like a good fit, open their profile to view more details. You can then reach 
-        out directly using the contact information provided or follow any booking instructions listed on their page.
-    </p>
+            <p>
+                When you find a tutor who feels like a good fit, open their profile to view more details. You can then reach 
+                out directly using the contact information provided or follow any booking instructions listed on their page.
+            </p>
 
-    <p>
-        If you're a tutor, simply create an account, fill in your profile with accurate and engaging information, and 
-        keep it updated so students can find you easily.
-    </p>
+            <p>
+                If you're a tutor, simply create an account, fill in your profile with accurate and engaging information, and 
+                keep it updated so students can find you easily.
+            </p>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
 
 {% endblock %}
