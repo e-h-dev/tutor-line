@@ -32,11 +32,11 @@
                         <input type="text" value="{{ tutor.id }}" name="tutor" id="id_tutor" hidden>
                         <!-- <p>Your are reviewing {{ tutor.name }}</p> -->
                         <label for="id_name">Your name:</label>
-                        <div><input type="text" name="name" id="id_name" placeholder="Your Name"></div>
+                        <div><input type="text" name="name" id="id_name" placeholder="Your Name *" required></div>
                         <label for="id_review">Your Review here:</label>
-                        <div><textarea name="review" id="id_review" placeholder=" Your review here"></textarea></div>
+                        <div><textarea name="review" id="id_review" placeholder=" Your review here *" required></textarea></div>
                         <label for="id_rating">Rate {{ tutor.name }}</label>
-                        <div><input type="number" name="rating" id="id_rating" placeholder="Rate {{ tutor.name }}"></div>
+                        <div><input type="number" name="rating" id="id_rating" max="5" min="1" required placeholder="Rate {{ tutor.name }} *"></div>
                         
                         <div><button class="btn btn-btn" type="submit">Review</button></div>
                     </form>
