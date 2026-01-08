@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
-from django.db.models import Sum
+from django.db.models import Sum, Avg
 from . models import Location, Category, Tutors, Reviews
 from .forms import TutorForm, ReviewForm, RatingForm, TutorImageForm
 
@@ -12,6 +12,8 @@ def tutors(request):
     """
 
     tutors = Tutors.objects.all()
+    # rating = Reviews.objects.filter(tutor=tutors).aggregate(Avg('rating'))['rating__avg']
+
     query = None
 
     sort = request.GET.get('sort')
@@ -39,6 +41,7 @@ def tutors(request):
     context = {
                 'tutors': tutors,
                 'search': query,
+                # 'rating': rating,
                 }
     return render(request, 'tutors/tutors.html', context)
 
@@ -99,27 +102,66 @@ def create_tutor(request):
     return render(request, 'tutors/create-tutor.html', {'form': form})
 
 
+# def review_tutor(request, tutor_id):
+
+#     tutor = get_object_or_404(Tutors, pk=tutor_id)
+#     total = Reviews.objects.filter(tutor=tutor).aggregate(total=Sum('rating'))['total']
+#     print('the total number of ratings for this tutor is', total)
+
+#     if request.method == 'POST':
+#         form = ReviewForm(request.POST, tutor_id)
+#         form2 = RatingForm(request.POST, instance=tutor)
+#         if form.is_valid() and form2.is_valid():
+#             form.save()
+#             form2.save()
+#             return redirect('tutors')
+#     else:
+#         form = ReviewForm()
+#         form2 = RatingForm()
+  
+#     context = {'form': form,
+#                'tutor': tutor,
+#                'form2': form2,
+#                'total': total
+#                }
+
+#     return render(request, 'tutors/review-tutor.html', context)
+
+
 def review_tutor(request, tutor_id):
 
     tutor = get_object_or_404(Tutors, pk=tutor_id)
-    total = Reviews.objects.filter(tutor=tutor).aggregate(total=Sum('rating'))['total']
-    print('the total number of ratings for this tutor is', total)
 
     if request.method == 'POST':
         form = ReviewForm(request.POST, tutor_id)
-        form2 = RatingForm(request.POST, instance=tutor)
-        if form.is_valid() and form2.is_valid():
-            form.save()
-            form2.save()
+
+        if form.is_valid():
+            # Save the new review
+            review = form.save(commit=False)
+            review.tutor = tutor
+            review.save()
+
+            # Recalculate the tutor's average rating
+            avg_rating = Reviews.objects.filter(tutor=tutor).aggregate(
+                avg=Avg('rating')
+            )['avg']
+
+            # Update tutor model
+            tutor.rating = avg_rating or 0
+            tutor.save()
+
             return redirect('tutors')
+
     else:
         form = ReviewForm()
-        form2 = RatingForm()
-  
-    context = {'form': form,
-               'tutor': tutor,
-               'form2': form2,
-               'total': total
-               }
+
+    # Optional: show total ratings or average on the page
+    total = Reviews.objects.filter(tutor=tutor).aggregate(total=Sum('rating'))['total']
+
+    context = {
+        'form': form,
+        'tutor': tutor,
+        'total': total,
+    }
 
     return render(request, 'tutors/review-tutor.html', context)

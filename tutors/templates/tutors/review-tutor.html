@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-4"></div>
         <div class="col-4">
-            <h1>Review your Tutor</h1>
+            <h1>Review {{ tutor }}</h1>
             <h2>Rated ({{ total }})</h2>
             <hr>
         </div>
@@ -29,16 +29,15 @@
                 <div class="form-container">
                     <form action="{% url 'review_tutor' tutor.id %}" method="POST">
                         {% csrf_token %}
-                        {{ form.as_p }}
-                        {{ form2.as_p }}
-                        <!-- <input type="text" value="{{ tutor.id }}" name="tutor" id="id_tutor" hidden>
+                        <input type="text" value="{{ tutor.id }}" name="tutor" id="id_tutor" hidden>
                         <p>Your are reviewing {{ tutor.name }}</p>
                         <label for="id_name">Your name:</label>
                         <input type="text" name="name" id="id_name">
                         <label for="id_review">Your Review here:</label>
                         <textarea name="review" id="id_review"></textarea>
                         <label for="id_rating">Rate {{ tutor.name }}</label>
-                        <input type="number" name="rating" id="id_rating"> -->
+                        <input type="number" name="rating" id="id_rating">
+                        
                         <button class="btn btn-btn" type="submit">Review</button>
                     </form>
                 </div>

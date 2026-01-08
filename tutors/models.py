@@ -77,7 +77,7 @@ class Tutors(models.Model):
     description = models.TextField()
     email = models.EmailField()
     phone = models.CharField(max_length=14)
-    rating = models.IntegerField(default=0)
+    rating = models.FloatField(default=0)
     image = models.ImageField(blank=True, null=True)
     is_male = models.BooleanField()
     color_1 = models.IntegerField(default=rand)
