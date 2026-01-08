@@ -1,0 +1,39 @@
+.form-container{
+    background-color: var(--light-clr);
+    border:2px solid var(--drk-clr);
+    border-radius: 15px;
+    padding:30px;
+}
+
+label{
+    display:none;
+}
+
+input, textarea{
+    background-color: var(--light-opaque-1);
+    outline:none;
+    border: none;
+    box-shadow: 0 0.5px;
+    margin:0;
+    width:100%;
+    color:var(--drk-clr);
+    font-family: var(--main-font);
+}
+
+input{
+    height:60px
+}
+
+textarea{
+    resize: none;
+    height:100px;
+}
+
+button{
+    margin-top: 20px;
+    align-items: center;
+}
+
+input:placeholder{
+    color:var(--drk-clr)
+}
