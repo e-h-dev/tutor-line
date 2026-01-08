@@ -8,15 +8,18 @@
 }
 
 .btn-btn{
-    color:var(--light-clr) !important;
-    background-color: var(--drk-clr) !important;
-    border: var(--drk-clr) outset 3px !important;
+    color:var(--drk-clr) !important;
+    font-weight: 700 !important;
+    font-family: var(--main-font) !important;
+    background-color: rgba(122, 46, 46, 0.1) !important;
+    border: var(--drk-clr) solid 2px !important;
     border-radius: 5px !important;
 }
 
 .btn-btn:hover{
-    background-color: #7a4040 !important;
-    border: #7a4040 outset 3px !important;
+    background-color: var(--drk-clr) !important;
+    border: rgba(122, 46, 46, 0.1) solid 2px !important;
+    color:var(--light-clr) !important;
 }
 
 .btn-btn:active:focus,
