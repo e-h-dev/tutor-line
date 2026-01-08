@@ -26,14 +26,14 @@
                         <div class="row">
                             <div class="col-12 col-md-5 info-col shadow" id="info-col">
                                 <div class="info-col-opaque"></div>
-                                <h3 class="text-center" id="student-header"><u>Students</u></h3>
+                                <h3 class="text-center" id="student-header">Students</h3>
                                 <p class="mt-3">Browse subjects, compare educator profiles, and choose the right fit for your learning needs.</p>
                                 <p class="mt-5">With us you find more than just a teacher you discover the right path for your growth. Explore a wide range of subjects, connect with educators who match your style, and enjoy flexible lessons that fit your schedule. With transparent profiles, secure payments, and a supportive learning environment, you can focus on building skills and confidence at your own pace.</p>
                                 <button class="btn my-btn shadow"><a href="{% url 'tutors' %}">Find you Tutor</a></button>
                             </div>
                             <div class="d-none d-md-block col-2"></div>
                             <div class="col-12 col-md-5 info-col shadow" id="info-col-right">
-                                <h3 class="text-center" id="educator-header"><u>Educators</u></h3>
+                                <h3 class="text-center" id="educator-header">Educators</h3>
                                 <p class="mt-3">Create your profile to share your expertise and set your rates.
                                 Our platform makes it simple — search, connect, and start learning or teaching with confidence.</p>
                                 <p class="mt-5">Whether you're an experienced teacher or just beginning to share your knowledge, our platform provides the tools to help you succeed. Build meaningful connections with learners, showcase your unique teaching style, and grow your professional presence. You can focus on what matters most — inspiring and empowering others through education.</p>
@@ -95,19 +95,21 @@
 {% endblock %}
 {% block postloadjs %}
 <script>
-    let student = document.getElementById('student-header')
+    let student = document.getElementById('student-header');
+    const educator = document.getElementById('educator-header');
 
     function changeHeader(){
-        student.style.animation = "header-change 2s";
+        student.style.animation = "header-change 1.5s infinite";
+    }
+
+    function changeHeaderEd(){
+        educator.style.animation = "header-change 1.5s infinite";
     }
 
     document.addEventListener('DOMContentLoaded', () => {
         setTimeout(changeHeader, 2000);
+        setTimeout(changeHeaderEd, 4000);
     });
-    //document.addEventListener('DOMContentLoaded', setTimeOut(changeHeader, 2000))
-</script>
-    
-<script>
 
     window.onscroll = function(){enlargeHeader()};
 
@@ -125,7 +127,8 @@
             infoRight.style.backgroundColor = infoCol.style.backgroundColor = "var(--ylw-clr)";
             infoRight.style.color = infoCol.style.color = "var(--drk-clr)";
             infoRight.style.animation = infoCol.style.animation = "col-open 2s";
-            infoRight.style.height = infoCol.style.height = "550px"
+            infoRight.style.height = infoCol.style.height = "550px";
+            student.style.color = 'var(--drk-clr)';
         }
         else{
             header2.style.fontSize = "1rem";
