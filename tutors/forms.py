@@ -9,10 +9,17 @@ class TutorForm(forms.ModelForm):
         fields = ['name', 'location', 'category', 'subject', 'price', 'phone', 'email', 'description', 'is_male']
         widgets = {
             'is_male': forms.Select(choices=[
-                (None, 'Gender...'),
+                (None, 'Are you Male or Female?'),
                 (True, 'Male'),
                 (False, 'Female'),
-            ])
+            ]),
+            'name': forms.TextInput(attrs={'placeholder': "Your Name"}),
+            'subject': forms.TextInput(attrs={'placeholder': "Your Subject"}),
+            'price': forms.NumberInput(attrs={'placeholder': "Your hourly rate"}),
+            'phone': forms.TextInput(attrs={'placeholder': "Your Phone Number"}),
+            'email': forms.EmailInput(attrs={'placeholder': "Your Email"}),
+            'description': forms.Textarea(attrs={'placeholder': "Your Description"}),
+
         }
 
     # image = forms.ImageField(label='Image', required=False)

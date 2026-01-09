@@ -3,7 +3,7 @@
 
 {% block extracss%}
 <link rel="stylesheet" href="{% static 'css/tutors.css' %}">
-<link rel="stylesheet" href="{% static 'css/create-tutor.css' %}">
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
 {% endblock %}
 
 {% block extra_title %} - Create Profile {% endblock %}
@@ -27,6 +27,7 @@
             <div class="col-6">
                 <div class="form-container">
                     <form action="{% url 'create_tutor' %}" method="POST" enctype="multipart/form-data">
+                        <h4>To create your profile fill in the form </h4>
                         {% csrf_token %}
                         {{ form.as_div }}
                         <button class="btn btn-btn" type="submit">Create Profile</button>
