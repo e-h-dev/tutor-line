@@ -35,6 +35,7 @@ class TutorImageForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields['image'].required = True
 
 
 class ReviewForm(forms.ModelForm):
