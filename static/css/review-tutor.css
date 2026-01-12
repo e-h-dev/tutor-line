@@ -1,0 +1,22 @@
+.star-btns{
+    display:flex;
+    width:120px;
+}
+
+label[for="id_rating"]{
+    display: block;
+    color: var(--drk-clr);
+    font-family: var(--main-font);
+    margin-top: 10px;
+}
+
+input[type="radio"]{
+    height:20px;
+    box-shadow: 0 0;
+    appearance: none;
+}
+
+.fa-star{
+    font-size: 1.3rem;
+    color:var(--ylw-clr)
+}

@@ -3,6 +3,7 @@
 
 {% block extracss%}
 <link rel="stylesheet" href="{% static 'css/tutors.css' %}">
+<link rel="stylesheet" href="{% static 'css/review-tutor.css' %}">
 <link rel="stylesheet" href="{% static 'css/forms.css' %}">
 {% endblock %}
 
@@ -36,8 +37,14 @@
                         <label for="id_review">Your Review here:</label>
                         <div><textarea name="review" id="id_review" placeholder=" Your review here *" required></textarea></div>
                         <label for="id_rating">Rate {{ tutor.name }}</label>
-                        <div><input type="number" name="rating" id="id_rating" max="5" min="1" required placeholder="Rate {{ tutor.name }} *"></div>
-                        
+                        <!-- <div><input type="number" name="rating" id="id_rating" max="5" min="1" required placeholder="Rate {{ tutor.name }} *"></div> -->
+                        <div class="star-btns">
+                            <input type="radio" class="fa-regular fa-star" id="input-star-1" name="rating" value="1" id="id_rating">
+                            <input type="radio" class="fa-regular fa-star" id="input-star-2" name="rating" value="2" id="id_rating">
+                            <input type="radio" class="fa-regular fa-star" id="input-star-3" name="rating" value="3" id="id_rating">
+                            <input type="radio" class="fa-regular fa-star" id="input-star-4" name="rating" value="4" id="id_rating">
+                            <input type="radio" class="fa-regular fa-star" id="input-star-5" name="rating" value="5" id="id_rating">
+                        </div>
                         <div><button class="btn btn-btn" type="submit">Review</button></div>
                     </form>
                 </div>
@@ -48,9 +55,63 @@
 </section>
 
 {% endblock %}
+
 {% block postloadjs %}
 
-</script>
+<script>
+    let star1 = document.getElementById('input-star-1')
+    let star2 = document.getElementById('input-star-2')
+    let star3 = document.getElementById('input-star-3')
+    let star4 = document.getElementById('input-star-4')
+    let star5 = document.getElementById('input-star-5')
 
+    function fillStar(e){
+        e.classList.add("fa-solid")
+        e.classList.remove("fa-regular")
+    }
+
+    function emptyStar(e){
+        e.classList.remove("fa-solid")
+        e.classList.add("fa-regular")
+    }
+
+    star1.addEventListener('click', () => fillStar(star1))
+
+    star2.addEventListener('click', () => fillStar(star2))
+    star2.addEventListener('click', () => fillStar(star1))
+
+    star3.addEventListener('click', () => fillStar(star3))
+    star3.addEventListener('click', () => fillStar(star2))
+    star3.addEventListener('click', () => fillStar(star1))
+
+    star4.addEventListener('click', () => fillStar(star4))
+    star4.addEventListener('click', () => fillStar(star3))
+    star4.addEventListener('click', () => fillStar(star2))
+    star4.addEventListener('click', () => fillStar(star1))
+
+    star5.addEventListener('click', () => fillStar(star5))
+    star5.addEventListener('click', () => fillStar(star4))
+    star5.addEventListener('click', () => fillStar(star3))
+    star5.addEventListener('click', () => fillStar(star2))
+    star5.addEventListener('click', () => fillStar(star1))
+
+
+    // empty stars in mistaken rating
+
+    star4.addEventListener('click', () => emptyStar(star5))
+
+    star3.addEventListener('click', () => emptyStar(star5))
+    star3.addEventListener('click', () => emptyStar(star4))
+
+    star2.addEventListener('click', () => emptyStar(star5))
+    star2.addEventListener('click', () => emptyStar(star4))
+    star2.addEventListener('click', () => emptyStar(star3))
+
+    star1.addEventListener('click', () => emptyStar(star5))
+    star1.addEventListener('click', () => emptyStar(star4))
+    star1.addEventListener('click', () => emptyStar(star3))
+    star1.addEventListener('click', () => emptyStar(star2))
+
+</script>
 
 {% endblock %}
