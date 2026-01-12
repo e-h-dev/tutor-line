@@ -102,7 +102,7 @@
                     <p><i class="fa-regular fa-envelope"></i> <a href="mailto:{{ tutor.email }}">{{ tutor.email }}</a></p>
                     <p><i class="fa-solid fa-money-bill-wave"></i> £{{ tutor.price }} per hour</p>
                     <p>
-                        <i class="fa-solid fa-star stars"></i> Rating : {% if tutor.rating == 0 %} <span class="no-rating">There are no ratings yet!</span>{% else %}{{ tutor.rating }}{% endif %} 
+                        <i class="fa-solid fa-star stars"></i> Rating : {% if tutor.rating == 0 %} <span class="no-rating">There are no ratings yet!</span>{% else %}{{ tutor.rating|floatformat:1 }}{% endif %} 
                     </p>
                     <hr>
                 </div>
@@ -121,7 +121,7 @@
             <div class="col-1"></div>
             <div class="col-2">
                 <h1>Reviews ({{ reviews.count }})</h1>
-                <h2> altogether a total of{{ tutor.rating }}</h2>
+                <h2> altogether a total of{{ tutor.rating|floatformat:1 }}</h2>
                 <hr>
                 <button class="btn btn-btn"><a href="{% url 'review_tutor' tutor.id %}">Leave a Review</a></button>
             </div>
@@ -132,9 +132,10 @@
         {% if reviews %}
             {% for review in reviews %}
             <div class="col-4">
-                <div class="review-box">
+                <div class="review-box" id="box-{{ review.id }}">
                     <h4>Reviewed by {{ review.name }}</h4>
-                    <div>Rating: {{ review.rating }}</div>
+                    <!-- <div>Rating: {{ review.rating }}</div> -->
+                     <div id="star-rating-{{ review.id }}">Rating: {{ review.rating }}</div>
                     <p>{{ review.review }}</p>
                     <p>Reviewed on {{ review.date }} at {{ review.time }}</p>
                 </div>
@@ -169,5 +170,18 @@ document.getElementById("download-card").addEventListener("click", function() {
 });
 </script>
 
+<script>
+    
+        {% for review in reviews %}
+        const review{{ review.id }} = document.getElementById('star-rating-{{ review.id }}')
 
+        function test{{ review.id }}(){
+            document.getElementById('box-{{ review.id }}').style.backgroundColor = 'green'
+        }
+    
+        review{{ review.id }}.addEventListener('click', () => test{{ review.id }}())
+        {% endfor %}
+        
+    
+</script>
 {% endblock %}
