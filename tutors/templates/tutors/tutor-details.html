@@ -102,7 +102,65 @@
                     <p><i class="fa-regular fa-envelope"></i> <a href="mailto:{{ tutor.email }}">{{ tutor.email }}</a></p>
                     <p><i class="fa-solid fa-money-bill-wave"></i> £{{ tutor.price }} per hour</p>
                     <p>
-                        <i class="fa-solid fa-star stars"></i> Rating : {% if tutor.rating == 0 %} <span class="no-rating">There are no ratings yet!</span>{% else %}{{ tutor.rating|floatformat:1 }}{% endif %} 
+                        Rating : {% if tutor.rating == 0 %} 
+                        <span class="no-rating">There are no ratings yet!</span>
+                        {% else %}
+                        {% if tutor.rating == 5 %}
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         {% elif tutor.rating > 4 %}
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star-half-stroke stars"></i>
+                         {% elif tutor.rating == 4 %}
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         {% elif tutor.rating > 3 %}
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star-half-stroke stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         {% elif tutor.rating == 3 %}
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         {% elif tutor.rating > 2 %}
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star-half-stroke stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         {% elif tutor.rating == 2 %}
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         {% elif tutor.rating > 1 %}
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star-half-stroke stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         {% else %}
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                        {% endif %}
+                        {% endif %} 
                     </p>
                     <hr>
                 </div>
@@ -134,8 +192,39 @@
             <div class="col-4">
                 <div class="review-box" id="box-{{ review.id }}">
                     <h4>Reviewed by {{ review.name }}</h4>
-                    <!-- <div>Rating: {{ review.rating }}</div> -->
-                     <div id="star-rating-{{ review.id }}">Rating: {{ review.rating }}</div>
+                    <div>Rating:
+                         {% if review.rating == 5 %}
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         {% elif review.rating == 4 %}
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         {% elif review.rating == 3 %}
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         {% elif review.rating == 2 %}
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         {% else %}
+                         <i class="fa-solid fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                         <i class="fa-regular fa-star stars"></i>
+                        {% endif %}
+                    </div>
                     <p>{{ review.review }}</p>
                     <p>Reviewed on {{ review.date }} at {{ review.time }}</p>
                 </div>
@@ -170,10 +259,18 @@ document.getElementById("download-card").addEventListener("click", function() {
 });
 </script>
 
-<script>
+<!-- <script>
     
         {% for review in reviews %}
         const review{{ review.id }} = document.getElementById('star-rating-{{ review.id }}')
+        const x{{ review.id }} = {{ review.rating }}
+        const insert{{ review.id }} = 'hello world'
+
+        for (let i = 0; 1 < x{{ review.id }}; i++){
+            const p = document.createElement("p");
+            p.textContent = insert{{ review.id }};
+            review{{ review.id }}.appendChild(p);
+        }
 
         function test{{ review.id }}(){
             document.getElementById('box-{{ review.id }}').style.backgroundColor = 'green'
@@ -183,5 +280,5 @@ document.getElementById("download-card").addEventListener("click", function() {
         {% endfor %}
         
     
-</script>
+</script> -->
 {% endblock %}
