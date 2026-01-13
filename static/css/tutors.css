@@ -203,6 +203,16 @@ p{
     color:var(--ylw-clr);
 }
 
+.r-stars{
+    font-size: 0.7rem;
+    color:var(--ylw-clr);
+    margin-right: -2px;
+}
+
+.rating-num{
+    font-size: 0.6rem;
+}
+
 .category-tag{
     font-size: 0.6rem;
     position: relative;

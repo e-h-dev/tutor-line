@@ -79,60 +79,61 @@
                                             <span class="no-rating">There are no ratings yet!</span>
                                             {% else %}
                                             {% if tutor.rating == 5 %}
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
                                             {% elif tutor.rating > 4 %}
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star-half-stroke stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star-half-stroke r-stars"></i>
                                             {% elif tutor.rating == 4 %}
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-regular fa-star stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-regular fa-star r-stars"></i>
                                             {% elif tutor.rating > 3 %}
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star-half-stroke stars"></i>
-                                            <i class="fa-regular fa-star stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star-half-stroke r-stars"></i>
+                                            <i class="fa-regular fa-star r-stars"></i>
                                             {% elif tutor.rating == 3 %}
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-regular fa-star stars"></i>
-                                            <i class="fa-regular fa-star stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-regular fa-star r-stars"></i>
+                                            <i class="fa-regular fa-star r-stars"></i>
                                             {% elif tutor.rating > 2 %}
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star-half-stroke stars"></i>
-                                            <i class="fa-regular fa-star stars"></i>
-                                            <i class="fa-regular fa-star stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star-half-stroke r-stars"></i>
+                                            <i class="fa-regular fa-star r-stars"></i>
+                                            <i class="fa-regular fa-star r-stars"></i>
                                             {% elif tutor.rating == 2 %}
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-regular fa-star stars"></i>
-                                            <i class="fa-regular fa-star stars"></i>
-                                            <i class="fa-regular fa-star stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-regular fa-star r-stars"></i>
+                                            <i class="fa-regular fa-star r-stars"></i>
+                                            <i class="fa-regular fa-star r-stars"></i>
                                             {% elif tutor.rating > 1 %}
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-solid fa-star-half-stroke stars"></i>
-                                            <i class="fa-regular fa-star stars"></i>
-                                            <i class="fa-regular fa-star stars"></i>
-                                            <i class="fa-regular fa-star stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-solid fa-star-half-stroke r-stars"></i>
+                                            <i class="fa-regular fa-star r-stars"></i>
+                                            <i class="fa-regular fa-star r-stars"></i>
+                                            <i class="fa-regular fa-star r-stars"></i>
                                             {% else %}
-                                            <i class="fa-solid fa-star stars"></i>
-                                            <i class="fa-regular fa-star stars"></i>
-                                            <i class="fa-regular fa-star stars"></i>
-                                            <i class="fa-regular fa-star stars"></i>
-                                            <i class="fa-regular fa-star stars"></i>
+                                            <i class="fa-solid fa-star r-stars"></i>
+                                            <i class="fa-regular fa-star r-stars"></i>
+                                            <i class="fa-regular fa-star r-stars"></i>
+                                            <i class="fa-regular fa-star r-stars"></i>
+                                            <i class="fa-regular fa-star r-stars"></i>
                                             {% endif %}
+                                            <span class="rating-num"> / {{ tutor.rating|floatformat:1 }}</span>
                                             {% endif %} 
                                         </p>
                                         <p class="date-tag">Date Added: {{ tutor.date_added }}</p>
