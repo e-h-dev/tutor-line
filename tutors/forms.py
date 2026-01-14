@@ -1,12 +1,13 @@
 from django import forms
 from .models import Location, Category, Tutors, Reviews
+from django.contrib.auth.models import User
 
 
 class TutorForm(forms.ModelForm):
 
     class Meta:
         model = Tutors
-        fields = ['user', 'name', 'location', 'category', 'subject', 'price', 'phone', 'email', 'description', 'is_male']
+        fields = ['name', 'location', 'category', 'subject', 'price', 'phone', 'email', 'description', 'is_male']
         widgets = {
             'is_male': forms.Select(choices=[
                 (None, 'Are you Male or Female?'),
@@ -26,7 +27,7 @@ class TutorForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
+        
 
 class TutorImageForm(forms.ModelForm):
     class Meta:

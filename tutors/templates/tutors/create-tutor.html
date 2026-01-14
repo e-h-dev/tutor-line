@@ -16,6 +16,7 @@
         <div class="col-4">
             <h1>Create a Tutor Profile</h1>
             <hr>
+            <p class="text-center">Creating for {{ user.username }}</p>
         </div>
         <div class="col-4"></div>
     </div>
@@ -29,6 +30,7 @@
                     <form action="{% url 'create_tutor' user.id %}" method="POST" enctype="multipart/form-data">
                         <h4>To create your profile fill in the form </h4>
                         {% csrf_token %}
+                        <input type="text" value="{{ user.username }}" name="user" id="id_user" hidden>
                         {{ form.as_div }}
                         <button class="btn btn-btn" type="submit">Create Profile</button>
                     </form>
