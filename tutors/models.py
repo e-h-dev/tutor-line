@@ -46,7 +46,8 @@ class Tutors(models.Model):
     class Meta:
         verbose_name_plural = "Tutors"
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=254)
     location = models.ForeignKey('Location', null=True, blank=True,
                                  on_delete=models.SET_NULL)

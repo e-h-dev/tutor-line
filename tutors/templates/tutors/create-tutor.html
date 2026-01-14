@@ -30,7 +30,6 @@
                     <form action="{% url 'create_tutor' user.id %}" method="POST" enctype="multipart/form-data">
                         <h4>To create your profile fill in the form </h4>
                         {% csrf_token %}
-                        <input type="text" value="{{ user.username }}" name="user" id="id_user" hidden>
                         {{ form.as_div }}
                         <button class="btn btn-btn" type="submit">Create Profile</button>
                     </form>

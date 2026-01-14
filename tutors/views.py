@@ -95,6 +95,8 @@ def create_tutor(request, user_id):
     if request.method == 'POST':
         form = TutorForm(request.POST, user_id, request.FILES)
         if form.is_valid():
+            tutor = form.save(commit=False)
+            tutor.user = request.user   
             tutor = form.save()
             if tutor.is_male:
                 return redirect('image_load', tutor_id=tutor.id)
