@@ -18,6 +18,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class TutorAdmin(admin.ModelAdmin):
     list_display = (
+        'user',
         'name',
         'location',
         'category',

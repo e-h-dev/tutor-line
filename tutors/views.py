@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum, Avg
+from django.contrib.auth.models import User
 from . models import Location, Category, Tutors, Reviews
 from .forms import TutorForm, ReviewForm, RatingForm, TutorImageForm
 
@@ -27,8 +28,8 @@ def tutors(request):
 
             tutors = tutors.filter(queries)
 
-    rating_none = tutors.filter(rating=0)
-    print(rating_none)
+    # rating_none = tutors.filter(rating=0)
+    # print(rating_none)
 
     if sort == "price_low":
         tutors = tutors.order_by('price')
@@ -86,12 +87,13 @@ def image_load(request, tutor_id):
 
 
 @login_required
-def create_tutor(request):
+def create_tutor(request, user_id):
 
     # tutor = Tutors.objects.all()
+    user = get_object_or_404(User, pk=user_id)
 
     if request.method == 'POST':
-        form = TutorForm(request.POST, request.FILES)
+        form = TutorForm(request.POST, user_id, request.FILES)
         if form.is_valid():
             tutor = form.save()
             if tutor.is_male:
@@ -101,7 +103,12 @@ def create_tutor(request):
     else:
         form = TutorForm()
 
-    return render(request, 'tutors/create-tutor.html', {'form': form})
+    context = {
+        'form': form,
+        'user': user,
+        }
+
+    return render(request, 'tutors/create-tutor.html', context)
 
 
 def review_tutor(request, tutor_id):

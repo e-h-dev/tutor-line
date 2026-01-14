@@ -1,50 +1,33 @@
 import random
 from django.db import models
-
-
-"""
-function to create random number between 1 and 50
-to connect to tutor model color_number, for buisness
-card unique color for each tutor registeres.
-"""
+from django.contrib.auth.models import User
 
 
 def rand():
+    """
+    function to create random number between 1 and 50
+    to connect to tutor model color_number, for buisness
+    card unique color for each tutor registered.
+    """
     return random.randint(1, 255)
-
-# def rand():
-#     return random.choice(['1', '2', '3', '4', '5,', '6'])
-
-
-# def rand_let():
-#     return random.choice(['a', 'b', 'c', 'd', 'e,', 'f'])
-
-# def random_color():
-#     return rand() + rand_let()
-
-
-# Create your models here.
-
-"""
-Model to contain all possible registered
-Locations from which tutors operate from.
-"""
 
 
 class Location(models.Model):
+    """
+    Model to contain all possible registered
+    Locations from which tutors operate from.
+    """
     name = models.CharField(max_length=254)
 
     def __str__(self):
         return self.name
 
 
-"""
-Model to contain the various categories
-of subjects a user can find a tutor from.
-"""
-
-
 class Category(models.Model):
+    """
+    Model to contain the various categories
+    of subjects a user can find a tutor from.
+    """
 
     class Meta:
         verbose_name_plural = "Categories"
@@ -55,16 +38,15 @@ class Category(models.Model):
         return self.name
 
 
-"""
-Model to store all tutor information
-"""
-
-
 class Tutors(models.Model):
+    """
+    Model to store all tutor information
+    """
 
     class Meta:
         verbose_name_plural = "Tutors"
 
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=254)
     location = models.ForeignKey('Location', null=True, blank=True,
                                  on_delete=models.SET_NULL)
@@ -83,10 +65,10 @@ class Tutors(models.Model):
     color_1 = models.IntegerField(default=rand)
     color_2 = models.IntegerField(default=rand)
     color_3 = models.IntegerField(default=rand)
-    
+ 
     def __str__(self):
         return self.name
-    
+
 
 class Reviews(models.Model):
     """

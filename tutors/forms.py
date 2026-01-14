@@ -6,7 +6,7 @@ class TutorForm(forms.ModelForm):
 
     class Meta:
         model = Tutors
-        fields = ['name', 'location', 'category', 'subject', 'price', 'phone', 'email', 'description', 'is_male']
+        fields = ['user', 'name', 'location', 'category', 'subject', 'price', 'phone', 'email', 'description', 'is_male']
         widgets = {
             'is_male': forms.Select(choices=[
                 (None, 'Are you Male or Female?'),
