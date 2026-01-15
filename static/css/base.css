@@ -53,6 +53,10 @@ hr{
     background-color: var(--light-clr) !important;
 }
 
+.pointer{
+    cursor: pointer;
+}
+
 /* base styles */
 
 html body{

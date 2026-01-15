@@ -35,25 +35,8 @@
     {% block homebody %}
     {% endblock %}
     <header>
-      <div class="sign-out-message" id="logout-btn">
-        <h3>Are you sure you want to Sign Out?</h3>
-        <div class="row mt-3">
-          <div class="col-2"></div>
-          <div class="col-2">
-            <form class="sign-form" method="POST" action="{% url 'account_logout' %}">
-            {% csrf_token %}
-            
-              <button class="btn btn-btn primaryAction" type="submit">Ok</button>
-            </form>
-          </div>
-          <div class="col-2">
-            <button class="btn btn-btn ml-6" role="button" onclick="closeLogout()">Cancel</button>
-          </div>
-          <div class="col-2"></div>
-          <div class="col-2"></div>
-          <div class="col-2"></div>
-        </div>
-      </div>
+      {% include 'base_includes/logout_message.html' %}
+      {% include 'base_includes/login_message_create_profile.html' %}
       <div class="container-fluid">
         <div class="row above-nav"></div>
         <!-- row with nav box -->
@@ -72,7 +55,7 @@
                 {% if request.user.is_authenticated %}
                 <li class="nav-select"><a href="{% url 'create_tutor' user.id %}">Create Tutor Profile</a></li>
                 {% else %}
-                <li class="nav-select"><a href="">Create Tutor Profile</a></li>
+                <li class="nav-select pointer" onclick="profileSignIn()">Create Tutor Profile</li>
                 {% endif %}
                 <li class="sign-in nav-select">
                   {% if request.user.is_authenticated %}
@@ -151,13 +134,19 @@
     </footer>
     <script>
       let logOut = document.getElementById("logout-btn");
+      let createProfile = document.getElementById('login-create-profile')
 
       function revealLogout(){
         logOut.style.display = "block";
       }
 
+      function profileSignIn(){
+        createProfile.style.display = "block";
+      }
+
       function closeLogout(){
         logOut.style.display = "none";
+        createProfile.style.display = 'none';
       }
     </script>
     <!-- js script for mobile menu dropdown -->
