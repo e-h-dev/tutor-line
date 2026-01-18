@@ -163,6 +163,12 @@ html body{
     font-size: 1.2rem;
 }
 
+.message-container{
+    position:relative;
+    z-index: 7;
+    background-color: var(--light-clr);
+}
+
 /* footer */
 
 .footer-area{

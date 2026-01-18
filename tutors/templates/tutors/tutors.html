@@ -53,6 +53,7 @@
                 <div class="col-10 col-md-8">
                     <div class="row">
                         {% for tutor in tutors %}
+                        
                         <div class="col-12 col-md-6 col-lg-4">
                             <a href="{% url 'tutor_details' tutor.id %}">
                                 <div class="tutor-card shadow">
@@ -70,10 +71,10 @@
                                     <div class="details">
                                         <h3>{{ tutor.name }}</h3>
                                         <p><i class="fa-solid fa-book-open"></i> : {{ tutor.subject }}</p>
-                                        <p>
+                                        <!-- <p>
                                             <i class="fa-regular fa-hand-pointer"></i>
                                              : {% if tutor.active == True %}Available{% else %}Unavailable{% endif %}
-                                        </p>
+                                        </p> -->
                                         <p>
                                             Rating : {% if tutor.rating == 0 %} 
                                             <span class="no-rating">There are no ratings yet!</span>
@@ -142,6 +143,7 @@
                                 </div>
                             </a>
                         </div>
+                        
                         {% endfor %}
                     </div>
                 </div>

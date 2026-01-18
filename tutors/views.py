@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum, Avg
 from django.contrib.auth.models import User
@@ -15,6 +16,12 @@ def tutors(request):
 
     tutors = Tutors.objects.all()
     # rating = Reviews.objects.filter(tutor=tutors).aggregate(Avg('rating'))['rating__avg']
+    active_tutors = Tutors.objects.filter(active=True)
+
+    if active_tutors.exists():
+        tutors = active_tutors
+    else:
+        tutors = None
 
     query = None
 
@@ -31,6 +38,7 @@ def tutors(request):
     # rating_none = tutors.filter(rating=0)
     # print(rating_none)
 
+
     if sort == "price_low":
         tutors = tutors.order_by('price')
     elif sort == "price_high":
@@ -39,6 +47,7 @@ def tutors(request):
         tutors = tutors.order_by('-date_added')
     elif sort == "highest_rating":
         tutors = tutors.filter(rating__gt=0).order_by('-rating')
+
 
     context = {
                 'tutors': tutors,
@@ -102,6 +111,9 @@ def create_tutor(request, user_id):
                 return redirect('image_load', tutor_id=tutor.id)
             else:
                 return redirect('tutors')
+        
+        messages.success(request, 'Your Profile has succesfully been set up')
+
     else:
         form = TutorForm()
 
@@ -136,6 +148,7 @@ def review_tutor(request, tutor_id):
             tutor.save()
 
             return redirect('tutors')
+        messages.success(request, f'You have succesfully reviewed {tutor.name}')
 
     else:
         form = ReviewForm()

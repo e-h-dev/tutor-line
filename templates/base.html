@@ -78,6 +78,13 @@
         </div>
       </div>
     </header>
+    {% if messages %}
+    {% for message in messages %}
+      <div class="message-container">
+        <p>{{ message }}</p>
+      </div>
+    {% endfor %}
+    {% endif%}
     {% block content %}
     {% endblock %}
     <footer>
