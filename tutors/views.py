@@ -8,14 +8,12 @@ from . models import Location, Category, Tutors, Reviews
 from .forms import TutorForm, ReviewForm, RatingForm, TutorImageForm
 
 
-# Create your views here.
 def tutors(request):
     """
     A view to display all the tutors and some information
     """
 
     tutors = Tutors.objects.all()
-    # rating = Reviews.objects.filter(tutor=tutors).aggregate(Avg('rating'))['rating__avg']
     active_tutors = Tutors.objects.filter(active=True)
 
     if active_tutors.exists():
@@ -35,10 +33,6 @@ def tutors(request):
 
             tutors = tutors.filter(queries)
 
-    # rating_none = tutors.filter(rating=0)
-    # print(rating_none)
-
-
     if sort == "price_low":
         tutors = tutors.order_by('price')
     elif sort == "price_high":
@@ -52,8 +46,8 @@ def tutors(request):
     context = {
                 'tutors': tutors,
                 'search': query,
-                # 'rating': rating,
                 }
+
     return render(request, 'tutors/tutors.html', context)
 
 
@@ -83,6 +77,7 @@ def image_load(request, tutor_id):
         image_form = TutorImageForm(request.POST, request.FILES, instance=tutor)
         if image_form.is_valid():
             image_form.save()
+            messages.success(request, 'Your Profile has succesfully been set up')
             return redirect('tutors')
     else:
         image_form = TutorImageForm()
@@ -98,7 +93,6 @@ def image_load(request, tutor_id):
 @login_required
 def create_tutor(request, user_id):
 
-    # tutor = Tutors.objects.all()
     user = get_object_or_404(User, pk=user_id)
 
     if request.method == 'POST':
@@ -110,9 +104,8 @@ def create_tutor(request, user_id):
             if tutor.is_male:
                 return redirect('image_load', tutor_id=tutor.id)
             else:
+                messages.success(request, 'Your Profile has succesfully been set up')
                 return redirect('tutors')
-        
-        messages.success(request, 'Your Profile has succesfully been set up')
 
     else:
         form = TutorForm()
@@ -146,14 +139,13 @@ def review_tutor(request, tutor_id):
             # Update tutor model
             tutor.rating = avg_rating or 0
             tutor.save()
+            messages.success(request, f'You have succesfully reviewed {tutor.name}')
 
             return redirect('tutors')
-        messages.success(request, f'You have succesfully reviewed {tutor.name}')
-
+        
     else:
         form = ReviewForm()
 
-    # Optional: show total ratings or average on the page
     total = Reviews.objects.filter(tutor=tutor).aggregate(total=Sum('rating'))['total']
 
     context = {
