@@ -177,14 +177,75 @@
         </div>
         <div class="row">
             <div class="col-1"></div>
-            <div class="col-2">
-                <h1>Reviews ({{ reviews.count }})</h1>
-                <h2> altogether a total of{{ tutor.rating|floatformat:1 }}</h2>
+            <div class="col-4">
+                <h3>Reviews ({{ reviews.count }})</h3>
+                <h5>
+                    Rating : {% if tutor.rating == 0 %} 
+                    <span class="no-rating">There are no ratings yet!</span>
+                    {% else %}
+                    {% if tutor.rating == 5 %}
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star stars"></i>
+                    {% elif tutor.rating > 4 %}
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star-half-stroke stars"></i>
+                    {% elif tutor.rating == 4 %}
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-regular fa-star stars"></i>
+                    {% elif tutor.rating > 3 %}
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star-half-stroke stars"></i>
+                    <i class="fa-regular fa-star stars"></i>
+                    {% elif tutor.rating == 3 %}
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-regular fa-star stars"></i>
+                    <i class="fa-regular fa-star stars"></i>
+                    {% elif tutor.rating > 2 %}
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star-half-stroke stars"></i>
+                    <i class="fa-regular fa-star stars"></i>
+                    <i class="fa-regular fa-star stars"></i>
+                    {% elif tutor.rating == 2 %}
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-regular fa-star stars"></i>
+                    <i class="fa-regular fa-star stars"></i>
+                    <i class="fa-regular fa-star stars"></i>
+                    {% elif tutor.rating > 1 %}
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-solid fa-star-half-stroke stars"></i>
+                    <i class="fa-regular fa-star stars"></i>
+                    <i class="fa-regular fa-star stars"></i>
+                    <i class="fa-regular fa-star stars"></i>
+                    {% else %}
+                    <i class="fa-solid fa-star stars"></i>
+                    <i class="fa-regular fa-star stars"></i>
+                    <i class="fa-regular fa-star stars"></i>
+                    <i class="fa-regular fa-star stars"></i>
+                    <i class="fa-regular fa-star stars"></i>
+                    {% endif %}
+                    <span class="rating-num"> / {{ tutor.rating|floatformat:1 }}</span>
+                    {% endif %} 
+                </h5>
                 <hr>
-                <button class="btn btn-btn"><a href="{% url 'review_tutor' tutor.id %}">Leave a Review</a></button>
+                <button class="btn btn-btn mb-5"><a href="{% url 'review_tutor' tutor.id %}">Review {{ tutor.name }}</a></button>
             </div>
             
-            <div class="col-9"></div>
+            <div class="col-7"></div>
         </div>
         <div class="row">
         {% if reviews %}
@@ -231,9 +292,10 @@
             </div>
             {% endfor%}
         {% else %}
-            <div class="col-4">
-                <p>{{ tutor.name }} has no Reviews Yet</p>
-                <p>Be the first to leave {% if tutor.is_male == True%} him{% else %}her{% endif %} a review.</p>
+            <div class="col-1"></div>
+            <div class="col-3">
+                <p>{{ tutor.name }} has no Reviews.
+                Be the first to review {% if tutor.is_male == True%} him{% else %}her{% endif %}.</p>
             </div>
         {% endif %}
         </div>
@@ -258,27 +320,4 @@ document.getElementById("download-card").addEventListener("click", function() {
     });
 });
 </script>
-
-<!-- <script>
-    
-        {% for review in reviews %}
-        const review{{ review.id }} = document.getElementById('star-rating-{{ review.id }}')
-        const x{{ review.id }} = {{ review.rating }}
-        const insert{{ review.id }} = 'hello world'
-
-        for (let i = 0; 1 < x{{ review.id }}; i++){
-            const p = document.createElement("p");
-            p.textContent = insert{{ review.id }};
-            review{{ review.id }}.appendChild(p);
-        }
-
-        function test{{ review.id }}(){
-            document.getElementById('box-{{ review.id }}').style.backgroundColor = 'green'
-        }
-    
-        review{{ review.id }}.addEventListener('click', () => test{{ review.id }}())
-        {% endfor %}
-        
-    
-</script> -->
 {% endblock %}
