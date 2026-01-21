@@ -10,7 +10,12 @@
 
 {% block content %}
     <h1>My messages</h1>
-    {{ message }}
+    {% for m in message %}
+    {% if user.username == m.name%}
+    <h3>{{ m.name }}</h3>
+    <p>{{ m.message }}</p>
+    {% endif %}
+    {% endfor %}
     
 {% endblock %}
 {% block postloadjs %}
