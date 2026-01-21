@@ -9,8 +9,12 @@
 
 
 {% block content %}
-    <h1>My messages</h1>
-    {{ message }}
+    <h1>Compose message</h1>
+    <form method="POST" action="{% url 'compose_message' compose.id %}">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Send Message</button>
+    </form>
     
 {% endblock %}
 {% block postloadjs %}
