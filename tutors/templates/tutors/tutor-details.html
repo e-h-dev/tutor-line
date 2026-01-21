@@ -96,7 +96,7 @@
             <div class="col-8 col-lg-4">
                 <div class="details shadow">
                     <h3 class="mb-4"><u>Details</u></h3>
-                    <span>Contact {{ tutor.name }}: </span><button class="btn btn-btn mb-2"><a href="">Direct message</a></button>
+                    <span>Contact {{ tutor.name }}: </span><button class="btn btn-btn mb-2"><a href="{% url 'messaging' %}">Direct message</a></button>
                     <hr>
                     <p><i class="fa-solid fa-phone"></i><a href="tel:{{ tutor.phone }}"> {{ tutor.phone }}</a></p>
                     <p><i class="fa-regular fa-envelope"></i> <a href="mailto:{{ tutor.email }}">{{ tutor.email }}</a></p>

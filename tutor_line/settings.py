@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'home',
     'tutors',
     'about',
+    'messaging',
 
     # socialaccounts.
     'allauth.socialaccount',
