@@ -137,8 +137,9 @@ def review_tutor(request, tutor_id):
             )['avg']
 
             # Update tutor model
-            tutor.rating = avg_rating or 0
-            tutor.save()
+            Tutors.objects.filter(pk=tutor.pk).update(rating=avg_rating or 0)
+            # tutor.rating = avg_rating or 0
+            # tutor.save()
             messages.success(request, f'You have succesfully reviewed {tutor.name}')
 
             return redirect('tutors')
