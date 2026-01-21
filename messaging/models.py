@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from tutors.models import Tutors
 
 # Create your models here.
 
@@ -9,7 +9,7 @@ class Message(models.Model):
     Model for all messages information
     """
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    tutor_name = models.ForeignKey(Tutors, on_delete=models.CASCADE)
     name = models.CharField(max_length=254)
     Phone = models.CharField(max_length=254)
     email = models.EmailField()
