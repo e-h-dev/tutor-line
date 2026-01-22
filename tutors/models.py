@@ -68,7 +68,7 @@ class Tutors(models.Model):
     color_3 = models.IntegerField(default=rand)
  
     def __str__(self):
-        return self.name
+        return self.user.username if self.user else "No user"
 
 
 class Reviews(models.Model):

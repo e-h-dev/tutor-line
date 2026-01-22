@@ -29,6 +29,11 @@
                     <form method="POST" action="{% url 'compose_message' compose.id %}">
                         {% csrf_token %}
                         {{ form.as_div }}
+                        <!-- <input type="text" value="{{ compose.id }}" name="tutor_name" id="id_tutor_name" hidden>
+                        <input type="text" name="name" maxlength="254" id="id_name" required placeholder="Enter Your Name">
+                        <input type="text" name="phone" id="id_phone" required>
+                        <input type="email" name="email" id="id_email" required>
+                        <textarea name="message" id="id_message" required></textarea> -->
                         <button type="submit">Send Message</button>
                     </form>
                 </div>

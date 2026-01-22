@@ -17,6 +17,8 @@ def compose_message(request, tutor_id):
 
     compose = get_object_or_404(Tutors, pk=tutor_id)
 
+    # compose = Tutors.objects.all()
+
     if request.method == 'POST':
         form = MessageForm(request.POST, tutor_id)
         if form.is_valid():
