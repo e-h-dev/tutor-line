@@ -80,7 +80,7 @@
     </header>
     {% if messages %}
     {% for message in messages %}
-      <div class="message-container">
+      <div class="message-container" id="message-container">
         <p>{{ message }}</p>
       </div>
     {% endfor %}
@@ -168,6 +168,19 @@
       function hideMenu(){
         menu.style.display = "none"
       }
+    </script>
+
+    <!-- script to remove auto popup messages -->
+    <script>
+      let messageContainer = document.getElementById('message-container')
+
+      // function closeMessage(){
+      //   messageContainer.style.display = "none"
+      // }
+
+      setTimeout(() => {
+         messageContainer.style.display = "none"
+      }, 3500)
     </script>
     {% block postloadjs %}
     {% endblock %}

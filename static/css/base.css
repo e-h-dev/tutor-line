@@ -166,7 +166,16 @@ html body{
 .message-container{
     position:relative;
     z-index: 7;
-    background-color: var(--light-clr);
+    background-color: var(--ylw-opaque);
+    color:var(--drk-clr);
+    font-family: var(--main-font);
+    font-size: 1.5rem;
+    font-weight: 700;
+    width:30%;
+    height:auto;
+    padding:15px;
+    border-radius: 15px;
+    left:5%;
 }
 
 /* footer */
