@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block extracss%}
-    <!-- <link rel="stylesheet" href="{% static 'css/forms.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/messaging.css' %}">
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
 {% endblock %}
 
 {% block extra_title %} - Compose Message {% endblock %}
@@ -14,7 +15,6 @@
         <div class="col-4"></div>
         <div class="col-4">
             <h1>Compose message</h1>
-            
             <hr>
         </div>
         <div class="col-4"></div>
@@ -29,12 +29,15 @@
                     <form method="POST" action="{% url 'compose_message' compose.id %}">
                         {% csrf_token %}
                         {{ form.as_div }}
-                        <!-- <input type="text" value="{{ compose.id }}" name="tutor_name" id="id_tutor_name" hidden>
-                        <input type="text" name="name" maxlength="254" id="id_name" required placeholder="Enter Your Name">
-                        <input type="text" name="phone" id="id_phone" required>
-                        <input type="email" name="email" id="id_email" required>
-                        <textarea name="message" id="id_message" required></textarea> -->
-                        <button type="submit">Send Message</button>
+                        <label for="id_send_to">Send to:</label>
+                        <input type="text" value="{{ compose.user }}" maxlength="254" name="send_to" id="id_send_to">
+                        <button class="btn btn-btn" type="submit">Send Message</button>
+                        <!-- <input type="text" value="{{ compose.user }}" name="send_to" id="id_send_to" hidden>
+                        <div><input type="text" name="name" maxlength="254" id="id_name" required placeholder="Enter Your Name"></div>
+                        <div><input type="text" name="phone" id="id_phone" placeholder="Your Phone Number" required></div>
+                        <div><input type="email" name="email" id="id_email" placeholder="Your Email" required></div>
+                        <div><textarea name="message" id="id_message" placeholder="Your Message" required></textarea></div>
+                        <button class="btn btn-btn" type="submit">Send Message</button> -->
                     </form>
                 </div>
             </div>

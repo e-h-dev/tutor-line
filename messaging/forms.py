@@ -7,7 +7,7 @@ class MessageForm(forms.ModelForm):
 
     class Meta:
         model = Message
-        fields = '__all__'
+        fields = ['name', 'Phone', 'email', 'message']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
