@@ -2,24 +2,47 @@
 {% load static %}
 
 {% block extracss%}
-
+    <link rel="stylesheet" href="{% static 'css/messaging.css' %}">
 {% endblock %}
 
 {% block extra_title %} - Tutors {% endblock %}
 
 
 {% block content %}
-    <h1>My messages</h1>
-
-    
-{{ user.username }}
-    {% for m in message %}
-        {% if m.send_to == user.username %}
-            <h3>{{ m.name }}</h3>
-            <h2>{{ m.send_to }}</h2>
-            <p>{{ m.message }}</p>
-        {% endif %}
-    {% endfor %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h1>My messages</h1>
+            <hr>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                {% for m in message %}
+                {% if m.send_to == user.username %}
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-2">{{ m.name }}</div>
+                    <div class="col-1"></div>
+                    <div class="col-4">{{ m.message }}</div>
+                    <div class="col-1"></div>
+                    <div class="col-2">{{ m.day_sent }} {{ m.time_sent }}</div>
+                    <div class="col-1">{{ m.read }}</div>
+                </div>
+                <hr>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+</section>
 {% endblock %}
 {% block postloadjs %}
 
