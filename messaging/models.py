@@ -20,5 +20,5 @@ class Message(models.Model):
     read = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.tutor_name
+        return self.name
 

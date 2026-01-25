@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from tutors.models import Tutors
 from .models import Message
@@ -34,6 +35,18 @@ def compose_message(request, tutor_id):
             form.save()
             messages.success(request, f'Your message has been\
                              sent to {compose.name}')
+            send_mail(
+                'Message from Tutor Line',
+                f"Dear {compose.name}! \
+                        You have recieved a DM from someone reaching\
+                            out to you. Check out the message\
+                            on your messages page.\
+                            Best Regards!\
+                            The Tutor Line team.",
+                "info@tutor-line.co.uk",
+                [compose.email],
+                fail_silently=False,
+            )
             return redirect('tutors')
     
     else:
