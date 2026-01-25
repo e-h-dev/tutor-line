@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from django.contrib import messages
+from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum, Avg
 from django.contrib.auth.models import User
@@ -42,7 +43,6 @@ def tutors(request):
     elif sort == "highest_rating":
         tutors = tutors.filter(rating__gt=0).order_by('-rating')
 
-
     context = {
                 'tutors': tutors,
                 'search': query,
@@ -78,6 +78,14 @@ def image_load(request, tutor_id):
         if image_form.is_valid():
             image_form.save()
             messages.success(request, 'Your Profile has succesfully been set up')
+            send_mail(
+                    'Profile Setup',
+                    f"Dear {tutor.name}! \
+                        Welcome to Tutor Line! You have succesfully setup your Tutor profile",
+                    "info@tutor-line.co.uk",
+                    [tutor.email],
+                    fail_silently=False,
+                )
             return redirect('tutors')
     else:
         image_form = TutorImageForm()
@@ -99,12 +107,20 @@ def create_tutor(request, user_id):
         form = TutorForm(request.POST, user_id, request.FILES)
         if form.is_valid():
             tutor = form.save(commit=False)
-            tutor.user = request.user   
+            tutor.user = request.user
             tutor = form.save()
             if tutor.is_male:
                 return redirect('image_load', tutor_id=tutor.id)
             else:
                 messages.success(request, 'Your Profile has succesfully been set up')
+                send_mail(
+                    'Profile Setup',
+                    f"Dear {tutor.name}! \
+                        Welcome to Tutor Line! You have succesfully setup your Tutor profile",
+                    "info@tutor-line.co.uk",
+                    [user.email],
+                    fail_silently=False,
+                )
                 return redirect('tutors')
 
     else:
