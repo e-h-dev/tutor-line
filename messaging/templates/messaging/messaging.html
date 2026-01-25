@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{% static 'css/messaging.css' %}">
 {% endblock %}
 
-{% block extra_title %} - Tutors {% endblock %}
+{% block extra_title %} - Messages {% endblock %}
 
 
 {% block content %}
@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-4"></div>
         <div class="col-4">
-            <h1>My messages</h1>
+            <h1>My messages ({{ message.count }})</h1>
             <hr>
         </div>
         <div class="col-4"></div>
@@ -22,28 +22,60 @@
 <section>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-2"></div>
-            <div class="col-8">
+            <div class="col-1"></div>
+            <div class="col-10">
                 {% for m in message %}
                 {% if m.send_to == user.username %}
-                <div class="row">
-                    <div class="col-1"></div>
+                <div class="row message-row" id="open-message-{{ m.id }}">
                     <div class="col-2">{{ m.name }}</div>
                     <div class="col-1"></div>
-                    <div class="col-4">{{ m.message }}</div>
-                    <div class="col-1"></div>
-                    <div class="col-2">{{ m.day_sent }} {{ m.time_sent }}</div>
-                    <div class="col-1">{{ m.read }}</div>
+                    <div class="col-5"></div>
+                    <!-- <div class="col-1"></div> -->
+                    <div class="col-2">{{ m.day_sent }}</div>
+                    <div class="col-2"> {{ m.time_sent }}</div>
                 </div>
-                <hr>
+                <div class="row message-show" id="message-{{ m.id }}">
+                    <div class="col-2"></div>
+                    <div class="col-3 message-content">
+                        <h4>Contact</h4>
+                        <hr>
+                        <div class="contact-details">
+                            <p><i class="fa-solid fa-phone"></i> {{ m.Phone }}</p>
+                            <p><i class="fa-solid fa-envelope"></i> {{ m.email }}</p>
+                        </div>
+                    </div>
+                    <div class="col-4 message-content">
+                        <h4>Message</h4>
+                        <hr>
+                        {{ m.message }}
+                    </div>
+                    <div class="col-3"></div>
+                </div>
                 {% endif %}
                 {% endfor %}
             </div>
-            <div class="col-2"></div>
+            <div class="col-1"></div>
         </div>
     </div>
 </section>
 {% endblock %}
 {% block postloadjs %}
+{% for m in message %}
+<script>
+    let message{{ m.id }} = document.getElementById('open-message-{{ m.id }}')
+    let messageContent{{ m.id }} = document.getElementById('message-{{ m.id }}')
 
+    function openMessage{{ m.id }}(){
+        messageContent{{ m.id }}.style.display = "flex"
+    }
+
+    function closeMessage{{ m.id }}(){
+        messageContent{{ m.id }}.style.display = "none"
+    }
+    
+    message{{ m.id }}.addEventListener('click', openMessage{{ m.id }})
+    messageContent{{ m.id }}.addEventListener('click', closeMessage{{ m.id }})
+    
+</script>
+{% endfor %}
 {% endblock %}

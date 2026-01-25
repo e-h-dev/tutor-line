@@ -3,3 +3,37 @@ h1{
     color:var(--drk-clr);
     margin-top: 20px;
 }
+
+.message-row{
+    background-color: var(--light-opaque-2);
+    color:var(--drk-clr);
+    font-family: var(--main-font);
+    font-weight: 800;
+    margin: 0;
+    border-bottom: solid 0.5px var(--light-clr);
+    padding:10px;
+    height:60px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.message-row:hover{
+    background-color: var(--light-opaque);
+}
+
+.message-show{
+    display:none;
+}
+
+.message-content{
+    color:var(--drk-clr);
+    font-family: var(--main-font);
+    background-color: var(--light-clr);
+    padding:20px;
+    border-right: solid 2px var(--ylw-opaque);
+    border-left: solid 2px var(--ylw-opaque)
+}
+
+.contact-details{
+    margin-top: 25%;
+}
