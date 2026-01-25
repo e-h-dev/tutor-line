@@ -14,11 +14,11 @@
     
 {{ user.username }}
     {% for m in message %}
-        
+        {% if m.send_to == user.username %}
             <h3>{{ m.name }}</h3>
             <h2>{{ m.send_to }}</h2>
             <p>{{ m.message }}</p>
-       
+        {% endif %}
     {% endfor %}
 {% endblock %}
 {% block postloadjs %}
