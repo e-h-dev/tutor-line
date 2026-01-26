@@ -12,10 +12,14 @@ from .forms import MessageForm
 def messaging(request):
 
     message = Message.objects.all()
+
+    current_user = request.user.username
     
-    my_messages = Message.objects.filter(send_to=User.username)
+    my_messages = Message.objects.filter(send_to=current_user)
 
     message_count = len(my_messages)
+
+    print("user is",  request.user.username)
 
     context = {
         'message': message,
