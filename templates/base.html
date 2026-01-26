@@ -59,6 +59,7 @@
                 {% endif %}
                 <li class="sign-in nav-select">
                   {% if request.user.is_authenticated %}
+                  <div class="message-count-display">{{ message_count }}</div>
                   <p><strong>Hi!</strong> {{ user.username }}</p>
                   <div id="sign-in-dropdown">
                     {% if user.is_authenticated and user.is_superuser %}
