@@ -57,15 +57,20 @@
                 {% else %}
                 <li class="nav-select pointer" onclick="profileSignIn()">Create Tutor Profile</li>
                 {% endif %}
+                {% if request.user.is_authenticated %}
+                <li class="message-count-display">
+                  <a href="{% url 'messaging' %}">
+                    <i class="fa-solid fa-bell"></i> ({{ message_count }})
+                  </a>
+                </li>
+                {% endif %}
                 <li class="sign-in nav-select">
                   {% if request.user.is_authenticated %}
-                  <div class="message-count-display">{{ message_count }}</div>
                   <p><strong>Hi!</strong> {{ user.username }}</p>
                   <div id="sign-in-dropdown">
                     {% if user.is_authenticated and user.is_superuser %}
                       <p class="nav-select"><a href="/admin/">Admin</a></p>
                     {% endif %}
-                  <button class="nav-select btn logout-btn"><a href="{% url 'messaging' %}">Messages</a></button>
                   <button class="nav-select btn logout-btn" onclick="revealLogout()">Logout</button>
                   </div>
                   {% else %}
