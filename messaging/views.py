@@ -66,5 +66,5 @@ def delete_message(request, message_id):
     message = get_object_or_404(Message, pk=message_id)
 
     message.delete()
-    messages.success('Message Deleted')
+    messages.success(request, 'Message Deleted')
     return redirect(reverse('messaging'))
