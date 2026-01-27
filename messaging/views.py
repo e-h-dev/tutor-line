@@ -1,4 +1,5 @@
 from django.shortcuts import render, reverse, get_object_or_404, redirect
+from django.http import HttpResponse
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
@@ -68,3 +69,12 @@ def delete_message(request, message_id):
     message.delete()
     messages.success(request, f'You have deleted the message with subject "{message.subject}"')
     return redirect(reverse('messaging'))
+
+
+def mark_read(request, message_id):
+
+    message = get_object_or_404(Message, pk=message_id)
+    message.read = True
+    message.save()
+    return HttpResponse(status=204)
+

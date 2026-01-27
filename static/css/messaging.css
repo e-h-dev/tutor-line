@@ -5,16 +5,23 @@ h1{
 }
 
 .message-row{
-    background-color: var(--light-opaque-2);
     color:var(--drk-clr);
     font-family: var(--main-font);
-    font-weight: 800;
     margin: 0;
     border-bottom: solid 0.5px var(--light-clr);
     padding:20px;
     height:60px;
     overflow: hidden;
     cursor: pointer;
+}
+
+.message-row-unread{
+    background-color: var(--light-opaque-2);
+    font-weight: 800;
+}
+
+.message-row-read{
+    background-color: var(--light-opaque);
 }
 
 .message-row:hover{

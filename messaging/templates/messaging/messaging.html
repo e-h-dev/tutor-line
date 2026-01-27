@@ -26,15 +26,15 @@
             <div class="col-10">
                 {% for m in message %}
                 {% if m.send_to == user.username %}
-                <!-- <a href=""> -->
-                    <div class="row message-row" id="open-message-{{ m.id }}">
+                <a href="{% url 'mark_read' m.id %}">
+                    <div class="row message-row {% if m.read == False %}message-row-unread {%else %}message-row-read{% endif %}" id="open-message-{{ m.id }}">
                         <div class="col-3">{{ m.name }}</div>
                         <div class="col-5">{{ m.subject }}</div>
                         <!-- <div class="col-1"></div> -->
                         <div class="col-2">{{ m.day_sent }}</div>
                         <div class="col-2"> {{ m.time_sent }}</div>
                     </div>
-                <!-- </a> -->
+                </a>
                 <div class="row message-show" id="message-{{ m.id }}">
                     <div class="col-2"></div>
                     <div class="col-3 message-content">
@@ -84,6 +84,8 @@
 
     function openMessage{{ m.id }}(){
         messageContent{{ m.id }}.style.display = "flex"
+        message{{ m.id }}.style.fontWeight = '200'
+        message{{ m.id }}.style.backgroundColor = 'var(--light-opaque)'
     }
 
     function closeMessage{{ m.id }}(){
