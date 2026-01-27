@@ -60,7 +60,7 @@
                 {% if request.user.is_authenticated %}
                 <li class="message-count-display">
                   <a href="{% url 'messaging' %}">
-                    <i class="fa-solid fa-bell"></i><strong>({{ message_count }})</strong>
+                    <i class="fa-solid fa-bell"></i><span class="message_num">({{ unread_count }})</span>
                   </a>
                 </li>
                 {% endif %}

@@ -162,6 +162,11 @@ html body{
     }
 }
 
+.message_num{
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
 .sign-in:hover #sign-in-dropdown{
     display:block;
     animation: drop-down 0.5s;
