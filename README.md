@@ -67,3 +67,7 @@ Tuterline envisions a future where every educator has the tools to be heard, and
 ## About
 
 Tuterline is a platform built to empower independent tutors and simplify the way students find personalized support. We believe every educator deserves a space to showcase their voice, values, and teaching style. At the same time, students need a clear, intuitive way to discover tutors who truly resonate with their goals. Tutorline bridges this gap by offering a streamlined, human-centered experience that prioritizes visibility, trust, and meaningful connection.
+
+## Bugs
+
+- crerating the mark as read functioanlity the python function returnd to the page refreshing it and therefore the messages which opens via javascript ws not showing.
