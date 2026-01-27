@@ -66,5 +66,5 @@ def delete_message(request, message_id):
     message = get_object_or_404(Message, pk=message_id)
 
     message.delete()
-    messages.success(request, 'Message Deleted')
+    messages.success(request, f'You have deleted the message with subject "{message.subject}"')
     return redirect(reverse('messaging'))

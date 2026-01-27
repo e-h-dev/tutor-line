@@ -12,6 +12,7 @@ class Message(models.Model):
 
     send_to = models.CharField(max_length=254)
     name = models.CharField(max_length=254)
+    subject = models.CharField(max_length=254)
     Phone = models.CharField(max_length=254)
     email = models.EmailField()
     message = models.TextField()
