@@ -110,7 +110,7 @@ html body{
 
 .nav-options{
     position: relative;
-    left:200px;
+    left:170px;
     bottom:33px;
     color:var(--drk-clr)
 }
@@ -143,6 +143,23 @@ html body{
 
 .message-count-display:hover{
     color:var(--ylw-clr)
+}
+
+.fa-bell{
+    animation:swing 2s infinite
+}
+
+@keyframes swing{
+    0%{
+        transform: rotate(20deg);
+    }
+    50%{
+        transform: rotate(-20deg);
+        color:var(--ylw-clr)
+    }
+    100%{
+        transform: rotate(20deg);
+    }
 }
 
 .sign-in:hover #sign-in-dropdown{
