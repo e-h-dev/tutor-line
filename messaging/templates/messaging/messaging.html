@@ -26,14 +26,17 @@
             <div class="col-10">
                 {% for m in message %}
                 {% if m.send_to == user.username %}
-                <div class="row message-row" id="open-message-{{ m.id }}">
-                    <div class="col-2">{{ m.name }}</div>
-                    <div class="col-1"><a href="{% url 'delete_message' m.id %}"><i class="fa-solid fa-trash-can"></i></a></div>
-                    <div class="col-5"></div>
-                    <!-- <div class="col-1"></div> -->
-                    <div class="col-2">{{ m.day_sent }}</div>
-                    <div class="col-2"> {{ m.time_sent }}</div>
-                </div>
+                <!-- <a href=""> -->
+                    <div class="row message-row" id="open-message-{{ m.id }}">
+                        <div class="col-2">{{ m.name }}</div>
+                        <div class="col-1">
+                        </div>
+                        <div class="col-5"></div>
+                        <!-- <div class="col-1"></div> -->
+                        <div class="col-2">{{ m.day_sent }}</div>
+                        <div class="col-2"> {{ m.time_sent }}</div>
+                    </div>
+                <!-- </a> -->
                 <div class="row message-show" id="message-{{ m.id }}">
                     <div class="col-2"></div>
                     <div class="col-3 message-content">
@@ -50,6 +53,22 @@
                         {{ m.message }}
                     </div>
                     <div class="col-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-5"></div>
+                    <div class="col-2">
+                        <div class="delete-container" >
+                            <i class="fa-solid fa-trash-can"onclick="deleteConfirm()"></i>
+                        </div>
+                    </div>
+                    <div class="col-5"></div>
+                </div>
+                <div id="delete-message">
+                    <p>
+                        Are you sure you want to delete this message?
+                    </p>
+                    <button class="btn btn-btn"><a href="{% url 'delete_message' m.id %}">Yes</a></button>
+                    <button class="btn btn-btn">Cancel</button>
                 </div>
                 {% endif %}
                 {% endfor %}
@@ -76,6 +95,16 @@
     message{{ m.id }}.addEventListener('click', openMessage{{ m.id }})
     messageContent{{ m.id }}.addEventListener('click', closeMessage{{ m.id }})
     
+</script>
+
+<!-- function to display delete message -->
+<script>
+    let deleteBox = document.getElementById('delete-message');
+    
+    function deleteConfirm(){
+        deleteBox.style.display = 'block'
+    };
+
 </script>
 {% endfor %}
 {% endblock %}
