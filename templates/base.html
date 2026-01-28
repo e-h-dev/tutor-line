@@ -58,11 +58,19 @@
                 <li class="nav-select pointer" onclick="profileSignIn()">Create Tutor Profile</li>
                 {% endif %}
                 {% if request.user.is_authenticated %}
+                {% if unread_count >= 1%}
                 <li class="message-count-display">
                   <a href="{% url 'messaging' %}">
                     <i class="fa-solid fa-bell"></i><span class="message_num">({{ unread_count }})</span>
                   </a>
                 </li>
+                {% else %}
+                <li class="nav-select">
+                  <a href="{% url 'messaging' %}">
+                    <i class="fa-solid fa-comment-dots"></i>
+                  </a>
+                </li>
+                {% endif %}
                 {% endif %}
                 <li class="sign-in nav-select">
                   {% if request.user.is_authenticated %}

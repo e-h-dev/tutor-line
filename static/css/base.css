@@ -110,7 +110,7 @@ html body{
 
 .nav-options{
     position: relative;
-    left:170px;
+    left:180px;
     bottom:33px;
     color:var(--drk-clr)
 }
@@ -166,6 +166,11 @@ html body{
     font-weight: 700;
     font-size: 0.8rem;
 }
+
+.message-link{
+    font-size: 1.3rem;
+}
+
 
 .sign-in:hover #sign-in-dropdown{
     display:block;
