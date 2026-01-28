@@ -110,9 +110,16 @@ html body{
 
 .nav-options{
     position: relative;
-    left:180px;
     bottom:33px;
     color:var(--drk-clr)
+}
+
+.nav-logged{
+    left:180px;
+}
+
+.nav-non-logged{
+    left:240px;
 }
 
 .nav-select:hover{

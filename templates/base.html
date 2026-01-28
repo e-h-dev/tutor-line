@@ -49,7 +49,7 @@
               <li><a href="{% url 'home' %}">
                 <img src="/media/logo.png" alt="logo" class="logo"><span class="logo-txt">TutorLine</span>
               </a></li>
-              <span class="nav-options">
+              <span class="nav-options {% if request.user.is_authenticated %}nav-logged{% else %} nav-non-logged{% endif %}">
                 <li class="nav-select"><a href="{% url 'about' %}">About</a></li>
                 <li class="nav-select"><a href="{% url 'tutors' %}">Find a Tutor</a></li>
                 {% if request.user.is_authenticated %}
