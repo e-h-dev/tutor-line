@@ -1,3 +1,4 @@
+from datetime import date, timedelta
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from django.contrib import messages
@@ -17,6 +18,14 @@ def tutors(request):
     tutors = Tutors.objects.all()
     active_tutors = Tutors.objects.filter(active=True)
 
+    # date_joined = Tutors.objects.values_list("date_added", flat=True)
+
+    expiry = date.today() - timedelta(days=3)
+    gone = Tutors.objects.filter(date_added__lt=expiry)
+
+    for g in gone:
+        g
+        
     if active_tutors.exists():
         tutors = active_tutors
     else:
@@ -46,6 +55,7 @@ def tutors(request):
     context = {
                 'tutors': tutors,
                 'search': query,
+                'expired': g
                 }
 
     return render(request, 'tutors/tutors.html', context)
