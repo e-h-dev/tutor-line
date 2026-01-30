@@ -18,15 +18,6 @@ def tutors(request):
     tutors = Tutors.objects.all()
     active_tutors = Tutors.objects.filter(active=True)
 
-    # date_joined = Tutors.objects.values_list("date_added", flat=True)
-
-    
-    # gone = Tutors.objects.filter(date_added__lt=expiry)
-    # print(gone)
-    # for g in gone:
-    #     print(g)
-    
-
     if active_tutors.exists():
         tutors = active_tutors
     else:
@@ -45,7 +36,6 @@ def tutors(request):
             tut.save()
             print('I am no longer active')
             
-
     query = None
 
     sort = request.GET.get('sort')
@@ -70,7 +60,6 @@ def tutors(request):
     context = {
                 'tutors': tutors,
                 'search': query,
-                # 'expired': g
                 }
 
     return render(request, 'tutors/tutors.html', context)
