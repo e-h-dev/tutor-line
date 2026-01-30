@@ -20,16 +20,31 @@ def tutors(request):
 
     # date_joined = Tutors.objects.values_list("date_added", flat=True)
 
-    expiry = date.today() - timedelta(days=3)
-    gone = Tutors.objects.filter(date_added__lt=expiry)
+    
+    # gone = Tutors.objects.filter(date_added__lt=expiry)
+    # print(gone)
+    # for g in gone:
+    #     print(g)
+    
 
-    for g in gone:
-        g
-        
     if active_tutors.exists():
         tutors = active_tutors
     else:
         tutors = None
+
+    for tut in tutors:
+        joined = tut.date_added
+        day_joined = joined.day
+        validity = day_joined + 6
+        today = date.today() # - timedelta(days=1)
+        if today.day < validity:
+            tut.active = True
+            print('I am still active')
+        else:
+            tut.active = False
+            tut.save()
+            print('I am no longer active')
+            
 
     query = None
 
@@ -55,7 +70,7 @@ def tutors(request):
     context = {
                 'tutors': tutors,
                 'search': query,
-                'expired': g
+                # 'expired': g
                 }
 
     return render(request, 'tutors/tutors.html', context)
