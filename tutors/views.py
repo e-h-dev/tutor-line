@@ -18,15 +18,10 @@ def tutors(request):
     tutors = Tutors.objects.all()
     active_tutors = Tutors.objects.filter(active=True)
 
-    if active_tutors.exists():
-        tutors = active_tutors
-    else:
-        tutors = None
-
     for tut in tutors:
         joined = tut.date_added
         day_joined = joined.day
-        validity = day_joined + 6
+        validity = day_joined + 1
         today = date.today() # - timedelta(days=1)
         if today.day < validity:
             tut.active = True
@@ -35,6 +30,13 @@ def tutors(request):
             tut.active = False
             tut.save()
             print('I am no longer active')
+
+    if active_tutors.exists():
+        tutors = active_tutors
+    else:
+        tutors = None
+
+    
             
     query = None
 
