@@ -20,6 +20,7 @@ class TutorAdmin(admin.ModelAdmin):
     list_display = (
         'user',
         'name',
+        'date_added',
         'location',
         'category',
         'date_added',

@@ -74,6 +74,10 @@ def tutor_details(request, tutor_id):
 
     tutor = get_object_or_404(Tutors, pk=tutor_id)
 
+    if tutor.active == False:
+        messages.error(request, 'This tutor is no longer active, please choose another tutor')
+        return redirect('tutors')
+
     reviews = Reviews.objects.filter(tutor=tutor)
 
     template = 'tutors/tutor-details.html'
