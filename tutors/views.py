@@ -18,18 +18,42 @@ def tutors(request):
     tutors = Tutors.objects.all()
     active_tutors = Tutors.objects.filter(active=True)
 
+    """
+    variables to show current date in day month and year
+    """
+    today = date.today()
+    """
+    loop over tutors to get date joined and compare to current date
+    to check if account is still active
+    """
+
     for tut in tutors:
         joined = tut.date_added
-        day_joined = joined.day
-        validity = day_joined + 1
-        today = date.today() # - timedelta(days=1)
-        if today.day < validity:
-            tut.active = True
-            print('I am still active')
-        else:
+        expiry_date = today - timedelta(days=50)
+        print(joined)
+        print(f"if you joined on or before {expiry_date} you are no longer valid")
+
+        """
+        if statement to check if account is still active
+        if account is no longer active, set active to false and save
+        """
+        if joined < expiry_date:
             tut.active = False
             tut.save()
-            print('I am no longer active')
+            print("Your acount has expired, please renew here")
+        else:
+            tut.active = True
+            print("Your account is still active")
+        
+        # validity = day_joined + 1
+        # today = date.today() # - timedelta(days=1)
+        # if today.day < validity:
+        #     tut.active = True
+        #     print('I am still active')
+        # else:
+        #     tut.active = False
+        #     tut.save()
+        #     print('I am no longer active')
 
     if active_tutors.exists():
         tutors = active_tutors
