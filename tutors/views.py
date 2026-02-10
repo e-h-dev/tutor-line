@@ -29,7 +29,7 @@ def tutors(request):
 
     for tut in tutors:
         joined = tut.date_added
-        expiry_date = today - timedelta(days=50)
+        expiry_date = today - timedelta(days=30)
         print(joined)
         print(f"if you joined on or before {expiry_date} you are no longer valid")
 
@@ -176,6 +176,10 @@ def create_tutor(request, user_id):
         }
 
     return render(request, 'tutors/create-tutor.html', context)
+
+
+def payment_setup(request):
+    return render(request, 'tutors/payment-setup.html')
 
 
 def review_tutor(request, tutor_id):
