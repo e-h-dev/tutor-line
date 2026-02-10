@@ -35,8 +35,21 @@
 .logout-btn:hover{
     color:var(--ylw-clr) !important;
 }
-.sbmt-btn{
 
+.btn-message{
+    color:var(--drk-clr) !important;
+    font-weight: 700 !important;
+    font-size: 0.8rem !important;
+    font-family: var(--main-font) !important;
+    background-color: var(--light-opaque) !important;
+    border: var(--light-clr) solid 2px !important;
+    border-radius: 5px !important;
+}
+
+.btn-message:hover{
+    background-color: var(--drk-clr) !important;
+    border: var(--light-clr) solid 2px !important;
+    color:var(--light-clr) !important;
 }
 
 .close-btn{
