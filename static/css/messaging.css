@@ -59,7 +59,7 @@ h1{
     color:var(--ylw-clr)
 }
 
-#delete-message{
+.delete-message{
     position: absolute;
     z-index: 9;
     left:30%;
@@ -70,5 +70,4 @@ h1{
     color:var(--drk-clr);
     background-color: var(--light-clr);
     font-family: var(--main-font);
-    display:none
 }
