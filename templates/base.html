@@ -79,6 +79,9 @@
                     {% if user.is_authenticated and user.is_superuser %}
                       <p class="nav-select"><a href="/admin/">Admin</a></p>
                     {% endif %}
+                    <button class="nav-select btn logout-btn">
+                      <a href="{% url 'edit_tutor' user.id %}">My Profile</a>
+                    </button>
                   <button class="nav-select btn logout-btn" onclick="revealLogout()">Logout</button>
                   </div>
                   {% else %}

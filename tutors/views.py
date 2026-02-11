@@ -117,6 +117,10 @@ def tutor_details(request, tutor_id):
 def image_load(request, tutor_id):
     tutor = get_object_or_404(Tutors, pk=tutor_id)
 
+    if request.user != tutor.user:
+        messages.error(request, "You have no permission for this action.")
+        return redirect('tutors')
+
     if request.method == 'POST':
         image_form = TutorImageForm(request.POST, request.FILES, instance=tutor)
         if image_form.is_valid():
@@ -140,6 +144,38 @@ def image_load(request, tutor_id):
     }
     
     return render(request, 'tutors/image-load.html', context)
+
+
+def image_update(request, tutor_id):
+    tutor = get_object_or_404(Tutors, pk=tutor_id)
+
+    if request.user != tutor.user:
+        messages.error(request, "You have no permission for this action.")
+        return redirect('tutors')
+
+    if request.method == 'POST':
+        image_form = TutorImageForm(request.POST, request.FILES, instance=tutor)
+        if image_form.is_valid():
+            image_form.save()
+            messages.success(request, 'Your Profile has succesfully been updated')
+            send_mail(
+                    'Profile Updated',
+                    f"Dear {tutor.name}! \
+                        Welcome to Tutor Line! You have succesfully updated your Tutor profile",
+                    "info@tutor-line.co.uk",
+                    [tutor.email],
+                    fail_silently=False,
+                )
+            return redirect('tutors')
+    else:
+        image_form = TutorImageForm()
+
+    context = {
+        'tutor': tutor,
+        'image_form': image_form
+    }
+    
+    return render(request, 'tutors/image-update.html', context)
 
 
 @login_required
@@ -176,6 +212,44 @@ def create_tutor(request, user_id):
         }
 
     return render(request, 'tutors/create-tutor.html', context)
+
+
+@login_required
+def edit_tutor(request, user_id):
+    user = get_object_or_404(User, pk=user_id)
+    tutor = get_object_or_404(Tutors, user=user)
+
+    if request.user.id != user_id:
+        messages.error(request, "You are not allowed to edit this profile.")
+        return redirect('tutors')
+
+
+    if request.method == 'POST':
+        form = TutorForm(request.POST, instance=tutor)
+        if form.is_valid():
+            form.save()
+            if tutor.is_male:
+                return redirect('image_update', tutor_id=tutor.id)
+            else:
+                messages.success(request, 'Your Profile has succesfully been updated')
+                send_mail(
+                    'Profile Updated',
+                    f"Dear {tutor.name}! \
+                        Welcome to Tutor Line! You have succesfully updated your Tutor profile",
+                    "info@tutor-line.co.uk",
+                    [user.email],
+                    fail_silently=False,
+                )
+                return redirect('tutors')
+    else:
+        form = TutorForm(instance=tutor)
+
+    context = {
+        'form': form,
+        'user': user,
+        }
+
+    return render(request, 'tutors/edit-tutor.html', context)
 
 
 def payment_setup(request):

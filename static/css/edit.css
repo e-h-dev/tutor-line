@@ -1,0 +1,11 @@
+label{
+    display:block !important;
+    color:var(--drk-clr);
+    font-family: var(--main-font);
+    font-weight: 800;
+    margin-top: 20px;
+}
+
+label[for="id_is_male"]{
+    display:none !important;
+} 

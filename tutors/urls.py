@@ -8,5 +8,7 @@ urlpatterns = [
     path('create_tutor/<int:user_id>', views.create_tutor, name='create_tutor'),
     path('review_tutor/<int:tutor_id>', views.review_tutor, name='review_tutor'),
     path('image_load/<int:tutor_id>', views.image_load, name='image_load'),
+    path('edit_tutor/<int:user_id>', views.edit_tutor, name='edit_tutor'),
+    path('image_update/<int:tutor_id>', views.image_update, name='image_update'),
     path('payment_setup/', views.payment_setup, name='payment_setup')
 ]
