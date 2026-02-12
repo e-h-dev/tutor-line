@@ -2,6 +2,7 @@ from django.shortcuts import render, reverse, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.contrib import messages
 from django.core.mail import send_mail
+from django.utils.html import format_html
 from django.contrib.auth.models import User
 from tutors.models import Tutors
 from .models import Message
@@ -61,6 +62,10 @@ def compose_message(request, tutor_id):
                'form': form}
 
     return render(request, 'messaging/compose-message.html', context)
+
+
+def mes_conf():
+    return format_html("<p>Are you sure you want to delete this message?</p>")
 
 
 def delete_message(request, message_id):
