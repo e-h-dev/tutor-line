@@ -64,10 +64,6 @@ def compose_message(request, tutor_id):
     return render(request, 'messaging/compose-message.html', context)
 
 
-def mes_conf():
-    return format_html("<p>Are you sure you want to delete this message?</p>")
-
-
 def delete_message(request, message_id):
     message = get_object_or_404(Message, pk=message_id)
 
