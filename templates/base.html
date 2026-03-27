@@ -32,9 +32,10 @@
     <title>TutorLine{% block extra_title %}{% endblock %}</title>
   </head>
   <body>
+    <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:#000;color:#fff;padding:8px;z-index:100;transition:top .3s;text-decoration:none;" onfocus="this.style.top='0';" onblur="this.style.top='-40px';">Skip to main content</a>
     {% block homebody %}
     {% endblock %}
-    <header>
+    <header role="banner">
       {% include 'base_includes/logout_message.html' %}
       {% include 'base_includes/login_message_create_profile.html' %}
       <div class="container-fluid">
@@ -45,29 +46,30 @@
           <!-- column of nav box -->
           <div class="col-10 col-lg-8" id="nav">
             {% include 'base_includes/mobile_nav.html' %}
-            <ul class="d-none d-md-block nav nav-desktop">
-              <li><a href="{% url 'home' %}">
-                <img src="/media/logo.png" alt="logo" class="logo"><span class="logo-txt">TutorLine</span>
-              </a></li>
+            <nav role="navigation" aria-label="Primary site navigation">
+              <ul class="d-none d-md-block nav nav-desktop">
+                <li><a href="{% url 'home' %}" aria-label="Go to home page">
+                  <img src="/media/logo.png" alt="TutorLine logo" class="logo"><span class="logo-txt">TutorLine</span>
+                </a></li>
               <span class="nav-options {% if request.user.is_authenticated %}nav-logged{% else %} nav-non-logged{% endif %}">
                 <li class="nav-select"><a href="{% url 'about' %}">About</a></li>
                 <li class="nav-select"><a href="{% url 'tutors' %}">Find a Tutor</a></li>
                 {% if request.user.is_authenticated %}
                 <li class="nav-select"><a href="{% url 'create_tutor' user.id %}">Create Tutor Profile</a></li>
                 {% else %}
-                <li class="nav-select pointer" onclick="profileSignIn()">Create Tutor Profile</li>
+                <li class="nav-select pointer" role="button" tabindex="0" onclick="profileSignIn()" aria-label="Create Tutor Profile, please sign in">Create Tutor Profile</li>
                 {% endif %}
                 {% if request.user.is_authenticated %}
                 {% if unread_count >= 1%}
                 <li class="message-count-display">
-                  <a href="{% url 'messaging' %}">
-                    <i class="fa-solid fa-bell"></i><span class="message_num">({{ unread_count }})</span>
+                  <a href="{% url 'messaging' %}" aria-label="You have {{ unread_count }} unread messages">
+                    <i class="fa-solid fa-bell" aria-hidden="true"></i><span class="message_num">({{ unread_count }})</span>
                   </a>
                 </li>
                 {% else %}
                 <li class="nav-select">
-                  <a href="{% url 'messaging' %}">
-                    <i class="fa-solid fa-comment-dots"></i>
+                  <a href="{% url 'messaging' %}" aria-label="Open messaging">
+                    <i class="fa-solid fa-comment-dots" aria-hidden="true"></i>
                   </a>
                 </li>
                 {% endif %}
@@ -75,9 +77,9 @@
                 <li class="sign-in nav-select">
                   {% if request.user.is_authenticated %}
                   <p><strong>Hi!</strong> {{ user.username }}</p>
-                  <div id="sign-in-dropdown">
+                  <div id="sign-in-dropdown" aria-label="Account options" role="menu">
                     {% if user.is_authenticated and user.is_superuser %}
-                      <p class="nav-select"><a href="/admin/">Admin</a></p>
+                      <p class="nav-select"><a href="/admin/" aria-label="Go to Admin dashboard">Admin</a></p>
                     {% endif %}
                     <button class="nav-select btn logout-btn">
                       <a href="{% url 'edit_tutor' user.id %}">My Profile</a>
@@ -85,12 +87,13 @@
                   <button class="nav-select btn logout-btn" onclick="revealLogout()">Logout</button>
                   </div>
                   {% else %}
-                  <i class="fa-solid fa-user"></i>
-                   <a href="{% url 'account_login' %}">Login/SignUp</a>
+                  <i class="fa-solid fa-user" aria-hidden="true"></i>
+                   <a href="{% url 'account_login' %}" aria-label="Login or sign up">Login/SignUp</a>
                   {% endif %}
                 </li>
               </span>
             </ul>
+            </nav>
           </div>
           <div class="col-1 col-lg-2"></div>
         </div>
@@ -98,20 +101,22 @@
     </header>
     {% if messages %}
     {% for message in messages %}
-      <div class="message-container" id="message-container">
+      <div class="message-container" id="message-container" role="status" aria-live="polite" aria-atomic="true">
         <p>{{ message }}</p>
       </div>
     {% endfor %}
-    {% endif%}
-    {% block content %}
-    {% endblock %}
-    <footer>
+    {% endif %}
+    <main id="main-content" tabindex="-1" role="main">
+      {% block content %}
+      {% endblock %}
+    </main>
+    <footer role="contentinfo" aria-label="Site footer">
       <div class="container-fluid footer-area mt-5">
         <div class="row">
           <div class="col-1 col-lg-3"></div>
           <div class="col-3 col-lg-2 me-3">
-            <a href="">
-              <h4><img src="/media/logo.png" alt="logo" class="footer-logo">
+            <a href="" aria-label="Back to home">
+              <h4><img src="/media/logo.png" alt="TutorLine logo" class="footer-logo">
                 <strong>TutorLine</strong>
               </h4>
             </a>
@@ -122,11 +127,11 @@
               <span class="h6"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               <strong>Quick Links</strong>
             </h4>
-            <ul class="footer-list">
-              <li><a href="{% url 'about' %}">About</a></li>
-              <li><a href="{% url 'tutors' %}">Find a Tutor</a></li>
-              <li><a href="">Create Tutor Profile</a></li>
-              <li><a href="">Contact</a></li>
+            <ul class="footer-list" aria-label="Quick navigation links">
+              <li><a href="{% url 'about' %}" aria-label="About TutorLine">About</a></li>
+              <li><a href="{% url 'tutors' %}" aria-label="Find a Tutor">Find a Tutor</a></li>
+              <li><a href="" aria-label="Create Tutor Profile">Create Tutor Profile</a></li>
+              <li><a href="" aria-label="Contact">Contact</a></li>
               {% if request.user.is_authenticated %}
               <li><a href="#nav" role="button" onclick="revealLogout()">Logout</a></li>
               {% else %}
