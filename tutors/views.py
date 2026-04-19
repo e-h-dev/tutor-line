@@ -227,7 +227,8 @@ def edit_tutor(request, user_id):
     if request.method == 'POST':
         form = TutorForm(request.POST, instance=tutor)
         if form.is_valid():
-            form.save()
+            profile = form.save(commit=False)
+            profile.save(update_fields=['name', 'subject', 'category', 'location', 'price', 'description'])
             if tutor.is_male:
                 return redirect('image_update', tutor_id=tutor.id)
             else:
